@@ -1,0 +1,92 @@
+Map layer files go here, they can be of type .pms or xml. To create a layer you can use soldat polyworks which exports .pms files. Alternatively you can load .xml files. I will list tags supported.
+
+
+<mapdata bgR="int(0-255)" bgG="int(0-255)" bgB="int(0-255)" bg2R="int(0-255)" bg2G="int(0-255)" bg2B="int(0-255)">string(name of map)</map>
+
+<force2d></force2d>
+
+<texture src="string(filename)"></texture>
+
+<leveldata name="string" summary="string"></leveldata>
+
+<gundata src="string(filename)"></gundata>
+
+<vehicle src="string(filename)"></vehicle>
+
+<poly id="int(current poly)" type="int(type)" x1="float" y1="float" x2="float" y2="float" x3="float" y3="float"  de="float(density)" re="float(restitution <0)"  fr="float(friction)" r="int(red 0-255)"  g="int(green 0-255)"  b="int(blue 0-255)"  a="int(alpha 0-255)"></poly>
+
+type 0: normal
+type 1: only bullets collide
+type 2: only players collide
+type 3: nothing collides
+
+density is unused, all polygons are static;
+restitution is bounciness, 0 is no bounciness, 1 is equal bounce to force, must be 0 or higher
+
+
+<polycustomvertex id="int(poly id)" textureId="int" r0="int(0 -> 255)" g0="int(0 -> 255)" b0="int(0 -> 255)" a0="int(0 -> 255)" r1="int(0 -> 255)" g1="int(0 -> 255)" b1="int(0 -> 255)" a1="int(0 -> 255)" r2="int(0 -> 255)" g2="int(0 -> 255)" b2="int(0 -> 255)" a2="int(0 -> 255)" u0="float" v0="float" u1="float" v1="float" u2="float" v2="float" rhw0="float" rhw1="float" rhw2="float"></polycustomvertex>
+
+id corresponds to when the polygon was loaded, not to an arbitrary number you set, for example:
+<poly ...>
+<poly ...>
+<poly ...>
+
+<polycustomvertex id="1"> this will affect the second one
+
+
+textureId works the same way
+r,g,b,a with numbers correspond to colors per vertex
+u, v, rhw are for texture mapping
+
+<earth x="float" y="float" radius="float" gravity="float" distance="float" size="float" detail="float"></earth>
+
+earth creates a sphere made of polygons plus a gravitron
+
+to customize this further, create the polygons manually and add gravitron to center
+
+radius- polygons-radius of earth
+size- polygon length
+detail- polygons = detail*2(one for outer one for inner to create edge to walk on)
+gravity- gravitron- pull or push strength (farther closer= 
+distance- gravitron- how far the gravity expands to
+
+
+
+NEED TO FURTHER DOCUMENT THESE TYPES, COPY PASTED CODE FOR USE HOWEVER
+
+
+    else if (pieceName.equals("spawn")) {
+      game.spawnData.add(new Spawn(xOff+(curse.getFloatAttribute("x")*scaleW), yOff+(curse.getFloatAttribute("y")*scaleH), curse.getIntAttribute("type"), curse.getIntAttribute("subType"), curse.getIntAttribute("amount")));
+    } 
+    else if (pieceName.equals("spawnonearth")) {
+      Spawn ph = (Spawn) game.spawnData.get(curse.getIntAttribute("id"));
+      ph.setEarth(curse.getIntAttribute("id"), curse.getFloatAttribute("distance"));
+    } 
+    else if (pieceName.equals("spawninvehicle")) {
+      Spawn sh = (Spawn) game.spawnData.get(curse.getIntAttribute("spawnid"));
+      sh.setSpawnInVehicle(true, curse.getIntAttribute("type"));
+    } 
+    else if (pieceName.equals("spawnwithattachment")) {
+      Spawn sh = (Spawn) game.spawnData.get(curse.getIntAttribute("spawnid"));
+      sh.setSpawnWithAttachment(true, curse.getIntAttribute("type"), curse.getIntAttribute("amount"), curse.getIntAttribute("amount2"));
+    } 
+    else if (pieceName.equals("astar")) {
+      game.addPathfinder(int(xOff+(curse.getIntAttribute("x")*scaleW)), int(yOff+(curse.getIntAttribute("y")*scaleH)), int(curse.getIntAttribute("w")*scaleW), int(curse.getIntAttribute("h")*scaleH), curse.getIntAttribute("rows"), curse.getIntAttribute("cols"), curse.getContent(), boolean(curse.getStringAttribute("draw")));
+    } 
+    else if ((pieceName.equals("scenery")) && (settings.drawScenery || mainMenu)) {
+      game.sceneryData.add(new Scenery(curse.getStringAttribute("src"), xOff+(curse.getFloatAttribute("x")*scaleW), yOff+(curse.getFloatAttribute("y")*scaleH), curse.getFloatAttribute("z"), curse.getFloatAttribute("w")*scaleW, curse.getFloatAttribute("h")*scaleH, curse.getFloatAttribute("rotate")));
+      Scenery ph = (Scenery) game.sceneryData.get(game.sceneryData.size()-1);
+      ph.setColours(curse.getIntAttribute("r"), curse.getIntAttribute("g"), curse.getIntAttribute("b"), curse.getIntAttribute("a"));
+    } 
+    else if ((pieceName.equals("scenerycustomvertex")) && (settings.drawScenery || mainMenu)) {
+      Scenery sh = (Scenery) game.sceneryData.get(previousSceneryCount+curse.getIntAttribute("id"));
+      sh.setVColours(0, curse.getIntAttribute("r0"), curse.getIntAttribute("g0"), curse.getIntAttribute("b0"), curse.getIntAttribute("a0"));
+      sh.setVColours(1, curse.getIntAttribute("r1"), curse.getIntAttribute("g1"), curse.getIntAttribute("b1"), curse.getIntAttribute("a1"));
+      sh.setVColours(2, curse.getIntAttribute("r2"), curse.getIntAttribute("g2"), curse.getIntAttribute("b2"), curse.getIntAttribute("a2"));
+      sh.setVColours(3, curse.getIntAttribute("r3"), curse.getIntAttribute("g3"), curse.getIntAttribute("b3"), curse.getIntAttribute("a3"));
+      sh.setDepth(0, curse.getFloatAttribute("z0"));
+      sh.setDepth(1, curse.getFloatAttribute("z1"));
+      sh.setDepth(2, curse.getFloatAttribute("z2"));
+      sh.setDepth(3, curse.getFloatAttribute("z3"));
+    }
+  }
