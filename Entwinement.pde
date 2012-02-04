@@ -218,10 +218,10 @@ void setup() {
   client.broadcast(true);
   client.loopback(false);  
 
-  //mainMenu = true;
-  //gameMenu = new Menu();
-  game = new Engine("TESTING SCRIPTS");
-  loadMapRepo("_proctest.xml");
+  mainMenu = true;
+  gameMenu = new Menu();
+  //game = new Engine("TESTING SCRIPTS");
+  //loadMapRepo("_proctest.xml");
 }
 
 void draw() {
