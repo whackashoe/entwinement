@@ -33,14 +33,6 @@ class test:
 		#elif this.i == 7:
 		#	addDeath(0)
 
-def enterVehicle(id, vid):
-	global com
-	com += 's_en '+str(id)+' '+str(vid)+';'
-
-def exitVehicle(id):
-	global com
-	com += 's_ex '+str(id)+';'
-
 
 def loadGun(src):
 	global com
