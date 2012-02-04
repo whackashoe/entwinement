@@ -1,0 +1,54 @@
+Entwinement Copyright (c) 2011 Jett LaRue, whackashoe@gmail.com
+
+You must include this header in the source code.
+You must provide the source code with all distributions at no charge or cost.
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+###############################################################################
+
+
+Website: entwinement.co.nr
+
+Written in java/processing(processing.org)
+
+
+Features:
+		2d shooter action
+		customizable weapons
+		create vehicles with xml files
+		jython scripting engine
+		
+		
+
+Controls:
+		wasd movement
+		lmb shoot
+		rmb use attachment
+		x pickup item, enter vehicle
+		f throw weapon
+		tab opens chat window
+		
+To Download:
+
+First you must have git installed,
+Then download with git clone git@github.com/whackashoe/Entwinement.git
+
+Then please download the map/scenery/texture files from http://dl.dropbox.com/u/31011714/website/downloads/scentexmaps.zip. Unzip them and put them in your /Entwinement directory, you can copy your files from soldat into scenery and texture folders. For .PMS map files you need to copy them to /Entwinement/maps/data and then create maprepo .xml files in the /Entwinement/maps directory- you can just copy and paste an existing files maprepo and change the target to the new mao map.
+
+You now need to download processing-1.51 so head on over to here: http://code.google.com/p/processing/downloads/list (make sure you get 1.51, the new alphas might not work).
+ 
+Download http://dl.dropbox.com/u/31011714/website/downloads/libraries.zip and unzip them to your "sketchbook/libraries" folder, now start processing....
+
+Load Entwinement.pde and then press play.
+
+Woah- you made it, wasn't that hard was it?

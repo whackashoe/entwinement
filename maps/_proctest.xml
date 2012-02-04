@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<repo>
+<worldData width="10000" height="5000" gravityX="0" gravityY="100"></worldData>
+<gunlist src="list1.xml"></gunlist>
+<script src="splotch" version="1">
+</script>
+</repo>

@@ -1,0 +1,6 @@
+<weapon>
+<gun ammo="1" speed="100" radius="20" density="20" reloadtime="1" delaytime="1" damage="100">AirStrike</gun>
+<setBoom radius="50"></setBoom>
+<setSound>airstrike-fire.wav</setSound>
+<setBullet></setBullet>
+</weapon>

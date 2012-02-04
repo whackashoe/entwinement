@@ -1,0 +1,6 @@
+<weapon>
+<gun ammo="7" speed="650" radius="2" density="1" reloadtime="103" delaytime="23" damage="10">Deagles</gun>
+<setBullet>pistol.png</setBullet> 
+<setShotgun shells="2"></setShotgun>
+<setGun>ruger77.bmp</setGun>
+</weapon>

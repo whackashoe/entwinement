@@ -1,0 +1,66 @@
+<vehicle>
+<basic health="2000" fireHealth="1000" minParts="2" explosionMult="3" scale="0.9">Small car</basic>
+<exits x1="0" y1="-70" x2="0" y2="-70"></exits>
+<forces xi="0.4" yi="0.4" xfd="0.25" yfd="0.25"></forces>
+
+<part id="0" x="0" y="0" w="55" h="5" d="0.5">Body</part>
+<wheel id="1" x="-25" y="20" r="15" d="0.2">Left Wheel</wheel>
+<wheel id="2" x="25" y="20" r="15" d="0.2">Right Wheel</wheel>
+<wheel id="3" x="0" y="0" r="90" d="0.05">Collider</wheel>
+<wheel id="4" x="0" y="0" r="50" d="0.05">distancemotor</wheel>
+
+<setCockpit id="0"></setCockpit>
+<setFrame id="0"></setFrame>
+<setWheel id="1" xStrength="35" rotateStrength="0.055" rotateMax="1"></setWheel>
+<setImage id="1" src="wheel1small.png" scale="2"></setImage>
+<setKeyRotatable id="1">false</setKeyRotatable>
+<setLandingGear id="1"></setLandingGear>
+<setWheel id="2" xStrength="35" rotateStrength="0.055" rotateMax="1"></setWheel>
+<setLandingGear id="2"></setLandingGear>
+<setKeyRotatable id="2">false</setKeyRotatable>
+<setCollider id="3"></setCollider>
+<setGun id="3" gunX="0" gunY="-20"></setGun>
+<setKeyRotatable id="4">true</setKeyRotatable>
+<setCollider id="4">true</setCollider>
+<setWheel id="4" xStrength="500" rotateStrength="0.055" rotateMax="1"></setWheel>
+
+<setCollideId id="0">-4</setCollideId>
+<setCollideId id="1">-4</setCollideId>
+<setCollideId id="2">-4</setCollideId>
+<setCollideId id="3">-4</setCollideId>
+<setCollideId id="4">-4</setCollideId>
+
+<setHealth id="0" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="1" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="2" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="3" startingHealth="300" fireHealth="150"></setHealth>
+
+
+<connection id="0" type="1" p1="0" p2="1"></connection>
+<connection id="1" type="1" p1="0" p2="2"></connection>
+<connection id="2" p1="1" p2="2"></connection>
+<connection id="3" p1="0" p2="3"></connection>
+<connection id="4" type="2" p1="1" p2="4">rev</connection>
+<connection id="5" type="2" p1="2" p2="4">rev</connection>
+<connection id="6" p1="4" p2="0"></connection>
+
+<!--<joint cId="0" x1="-25" y1="0" x2="0" y2="0"></joint>
+<joint cId="0" x1="25" y1="0" x2="0" y2="0"></joint>
+<joint cId="0" x1="10" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="1" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="1" x1="20" y1="0" x2="0" y2="0"></joint>
+<joint cId="1" x1="-10" y1="0" x2="0" y2="0"></joint> -->
+
+
+<joint cId="2" x1="0" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="3" x1="0" y1="0" x2="0" y2="0"></joint>
+
+
+<revolute cId="4" anchorX="0" anchorY="0" limitTranslation="false" lowerTranslation="0.5" upperTranslation="10" motorSpeed="500" motorTorque="1000" alwaysRunning="true"></revolute>
+
+<revolute cId="5" anchorX="0" anchorY="0" limitTranslation="false" lowerTranslation="0.5" upperTranslation="10" motorSpeed="500" motorTorque="1000" alwaysRunning="true"></revolute>
+
+<joint cId="6" x1="0" y1="0" x2="0" y2="0" freq="10"></joint>
+</vehicle>

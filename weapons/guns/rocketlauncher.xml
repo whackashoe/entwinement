@@ -1,0 +1,6 @@
+<weapon>
+<gun ammo="4" speed="1330" radius="3" density="1" reloadtime="300" delaytime="50" damage="100">Rocket Launcher</gun>
+<setBullet>rocket.png</setBullet>
+<setBoom radius="60"></setBoom>
+<setGun>m79.bmp</setGun>/
+</weapon>

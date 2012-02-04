@@ -1,0 +1,39 @@
+<vehicle>
+<basic health="30000" fireHealth="1000" minParts="1" explosionMult="1" scale="0.6">Satan</basic>
+<exits x1="-100" y1="-50" x2="-100" y2="-500"></exits>
+<forces xi="1" yi="1" xfd="0.5" yfd="0.5"></forces>
+<grapple x="100" y="100"></grapple>
+
+
+<part id="0" x="0" y="0" w="400" h="250" d="0.1">Satans body</part>
+<!--
+<part id="1" x="-500" y="0" w="100" h="80" d="1">Satans body</part>
+<part id="2" x="500" y="0" w="100" h="80" d="1">Satans body</part>
+-->
+<wheel id="1" x="-500" y="0" r="300" d="1">Satans body</wheel>
+<wheel id="2" x="500" y="0" r="300" d="1">Satans body</wheel>
+
+<connection id="0" p1="0" p2="1"></connection>
+<connection id="1" p1="0" p2="2"></connection>
+
+<setPropellor id="0" xf="5000" yf="3000" lift="-22000"></setPropellor>
+<setHealth id="0" startingHealth="30000" fireHealth="1000"></setHealth>
+<setCockpit id="0"></setCockpit>
+<setLandingGear id="0"></setLandingGear>
+<setGun id="0" gunX="0" gunY="150" gunType="1"></setGun>
+
+<setPropellor id="1" xf="10000" yf="20" lift="-20800"></setPropellor>
+<setHealth id="1" startingHealth="30000" fireHealth="1000"></setHealth>
+<setLandingGear id="1"></setLandingGear>
+<setGun id="1" gunX="0" gunY="180" gunType="5"></setGun>
+
+<setPropellor id="2" xf="10000" yf="20" lift="-20800"></setPropellor>
+<setHealth id="2" startingHealth="30000" fireHealth="1000"></setHealth>
+<setLandingGear id="2"></setLandingGear>
+<setGun id="2" gunX="0" gunY="180" gunType="5"></setGun>
+
+<joint cId="0" x1="0" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="1" x1="0" y1="0" x2="0" y2="0"></joint>
+
+</vehicle>

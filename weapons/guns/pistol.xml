@@ -1,0 +1,6 @@
+<weapon>
+<gun ammo="8" speed="600" radius="2" density="1" reloadtime="65" delaytime="12" damage="15">Pistol</gun>
+<setBullet>pistol.png</setBullet> 
+<setGun>ruger77.bmp</setGun>
+<setSound>pistol-fire.wav</setSound>
+</weapon>

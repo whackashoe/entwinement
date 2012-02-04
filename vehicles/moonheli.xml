@@ -1,0 +1,53 @@
+<vehicle>
+<basic health="2000" fireHealth="1000" minParts="3" explosionMult="1" scale="0.6" maxVelo="300">Helicoptor</basic>
+<exits x1="0" y1="50" x2="0" y2="-100"></exits>
+<forces xi="1" yi="1" xfd="0.5" yfd="0.5"></forces>
+<grapple x="100" y="100"></grapple>
+
+<part id="0" x="30" y="0" w="200" h="20" d="0.01">Propellor</part>
+<part id="1" x="50" y="30" w="115" h="60" d="0.05">Cockpit</part>
+<part id="2" x="-70" y="50" w="70" h="10" d="0.01">Tail</part>
+<part id="3" x="30" y="80" w="140" h="5" d="0.02">Landing Gear</part>
+<part id="4" x="-65" y="35" w="25" h="20" d="0.01">Back Propellor</part>
+<wheel id="5" x="30" y="30" r="300" d="0.0001">Collider</wheel>
+
+<setPropellor id="0" xf="4000" yf="1000" lift="-27"></setPropellor>
+<setHealth id="0" startingHealth="300" fireHealth="150"></setHealth>
+<setCockpit id="1"></setCockpit>
+<setGun id="1" gunX="90" gunY="50"></setGun>
+<setHealth id="1" startingHealth="800" fireHealth="400"></setHealth>
+<setLandingGear id="2"></setLandingGear>
+<setHealth id="2" startingHealth="300" fireHealth="150"></setHealth>
+<setLandingGear id="3"></setLandingGear>
+<setHealth id="3" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="4" startingHealth="200" fireHealth="100"></setHealth>
+<setCollider id="5"></setCollider>
+<setGun id="5" gunX="100" gunY="50"></setGun>
+
+<connection id="0" p1="0" p2="1"></connection>
+<connection id="1" p1="2" p2="1"></connection>
+<connection id="2" p1="3" p2="1"></connection>
+<connection id="3" p1="4" p2="2"></connection>
+<connection id="4" p1="5" p2="1"></connection>
+
+<joint cId="0" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="0" x1="-75" y1="0" x2="-20" y2="10"></joint>
+<joint cId="0" x1="75" y1="0" x2="20" y2="10"></joint>
+
+<joint cId="1" x1="20" y1="0" x2="-20" y2="20"></joint>
+<joint cId="1" x1="0" y1="0" x2="-20" y2="-20"></joint>
+<joint cId="1" x1="-30" y1="0" x2="-20" y2="-20"></joint>
+<joint cId="1" x1="-25" y1="0" x2="0" y2="20"></joint>
+
+<joint cId="2" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="2" x1="-30" y1="0" x2="-30" y2="0"></joint>
+<joint cId="2" x1="30" y1="0" x2="30" y2="0"></joint>
+
+<joint cId="3" x1="0" y1="0" x2="-35" y2="5"></joint>
+<joint cId="3" x1="-5" y1="0" x2="-25" y2="0"></joint>
+<joint cId="3" x1="-10" y1="0" x2="-15" y2="5"></joint>
+
+<joint cId="4" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="4" x1="-20" y1="-20" x2="20" y2="-20"></joint>
+<joint cId="4" x1="20" y1="-20" x2="-20" y2="-20"></joint>
+</vehicle>

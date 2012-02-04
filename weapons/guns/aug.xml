@@ -1,0 +1,8 @@
+<weapon>
+<gun ammo="30" speed="600" radius="2" density="1" reloadtime="115" delaytime="7" damage="8">Aug</gun>
+<setBullet>machinegun.png</setBullet>
+<setAutomatic></setAutomatic>
+<setSound distance="1200">machinegun-fire.wav</setSound>
+<setGun>mp5.bmp</setGun>
+<setRecoil amount="0.01"></setRecoil>
+</weapon>

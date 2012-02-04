@@ -1,0 +1,23 @@
+<vehicle>
+<basic health="4000" fireHealth="2000" minParts="1" explosionMult="3" scale="0.55" maxVelo="500">hoverbug</basic>
+<exits x1="0" y1="-150" x2="0" y2="-150"></exits>
+<forces xi="0.2" yi="0.1" xfd="0.2" yfd="0.1"></forces>
+<grapple x="0" y="120"></grapple>
+
+<wheel id="0" x="0" y="0" r="50" d="0.01">Left Wheel</wheel>
+<wheel id="1" x="0" y="0" r="100" d="0.001">Collider</wheel>
+
+<setCockpit id="0"></setCockpit>
+<setFrame id="0"></setFrame>
+<setWheel id="0" xStrength="0" rotateStrength="1" rotateMax="10"></setWheel>
+<setLandingGear id="0"></setLandingGear>
+<setPropellor id="0" xf="10" yf="10" lift="4"></setPropellor>
+<setCollider id="1"></setCollider>
+
+<setHealth id="0" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="1" startingHealth="300" fireHealth="150"></setHealth>
+
+<connection id="0" p1="0" p2="1"></connection>
+
+<joint cId="0" x1="0" y1="0" x2="0" y2="0"></joint>
+</vehicle>

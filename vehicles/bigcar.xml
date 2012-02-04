@@ -1,0 +1,81 @@
+<vehicle>
+<basic health="4000" fireHealth="2000" minParts="3" explosionMult="3" scale="0.8">Big car</basic>
+<exits x1="0" y1="-70" x2="0" y2="-70"></exits>
+<forces xi="0.4" yi="0.4" xfd="0.25" yfd="0.25"></forces>
+<grapple x="0" y="-70"></grapple>
+<part id="0" x="-30" y="0" w="50" h="5" d="0.5">Body1</part>
+<part id="1" x="30" y="0" w="50" h="5" d="0.5">Body1</part>
+
+<wheel id="2" x="-50" y="20" r="25" d="0.5">Left Wheel</wheel>
+<wheel id="3" x="0" y="20" r="20" d="0.5">c Wheel</wheel>
+<wheel id="4" x="50" y="20" r="15" d="0.5">r Wheel</wheel>
+<wheel id="5" x="0" y="0" r="150" d="0.05">Collider</wheel>
+
+<setCockpit id="0"></setCockpit>
+<setFrame id="0"></setFrame>
+<setFrame id="1"></setFrame>
+<setWheel id="2" xStrength="35" rotateStrength="0.025" rotateMax="1"></setWheel>
+<setImage id="2" src="wheel1small.png" scale="1.2"></setImage>
+<setLandingGear id="2"></setLandingGear>
+<setWheel id="3" xStrength="35" rotateStrength="0.025" rotateMax="1"></setWheel>
+<setImage id="3" src="wheel1small.png" scale="1.2"></setImage>
+<setLandingGear id="3"></setLandingGear>
+<setWheel id="4" xStrength="35" rotateStrength="0.025" rotateMax="1"></setWheel>
+<setLandingGear id="4"></setLandingGear>
+<setImage id="4" src="wheel1small.png" scale="1.2"></setImage>
+<setCollider id="5"></setCollider>
+<setGun id="5" gunX="0" gunY="-50"></setGun>
+
+<setHealth id="0" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="1" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="2" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="3" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="4" startingHealth="300" fireHealth="150"></setHealth>
+<setHealth id="5" startingHealth="300" fireHealth="150"></setHealth>
+
+<connection id="0" p1="0" p2="1"></connection>
+<connection id="1" p1="0" p2="2"></connection>
+<connection id="2" p1="0" p2="3"></connection>
+<connection id="3" p1="0" p2="4"></connection>
+<connection id="4" p1="1" p2="2"></connection>
+<connection id="5" p1="1" p2="3"></connection>
+<connection id="6" p1="1" p2="4"></connection>
+<connection id="7" p1="0" p2="5"></connection>
+<connection id="8" p1="1" p2="5"></connection>
+
+<joint cId="0" x1="15" y1="0" x2="15" y2="0"></joint>
+<joint cId="0" x1="-10" y1="0" x2="-10" y2="0"></joint>
+<joint cId="0" x1="0" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="1" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="1" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="1" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="2" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="2" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="2" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="3" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="3" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="3" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="4" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="4" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="4" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="5" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="5" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="5" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="6" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="6" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="6" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="7" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="7" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="7" x1="20" y1="0" x2="0" y2="0"></joint>
+
+<joint cId="8" x1="-20" y1="0" x2="0" y2="0"></joint>
+<joint cId="8" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="8" x1="20" y1="0" x2="0" y2="0"></joint>
+</vehicle>

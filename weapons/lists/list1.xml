@@ -1,0 +1,14 @@
+<guns>
+<gun choice="true">pistol.xml</gun>
+<gun choice="true">machinegun.xml</gun>
+<gun choice="true">ak47.xml</gun>
+<gun choice="true">aug.xml</gun>
+<gun choice="true">shotgun.xml</gun>
+<gun choice="true">sniper.xml</gun>
+<gun choice="true">grenadelauncher.xml</gun>
+<gun choice="false">mininuke.xml</gun>
+<gun choice="false">flamethrower.xml</gun>
+<gun choice="true">grenade.xml</gun>
+<gun choice="true">raygun.xml</gun>
+<gun choice="true">deagles.xml</gun>
+</guns>

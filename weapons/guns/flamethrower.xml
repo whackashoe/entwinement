@@ -1,0 +1,9 @@
+<weapon>
+<gun ammo="100" speed="70" radius="1" density="1" reloadtime="120" delaytime="3" damage="1">Flame Thrower</gun>
+<setFlame></setFlame>
+<setShotgun shells="4"></setShotgun>
+<setAutomatic></setAutomatic>
+<setGun>flamer.bmp</setGun>
+<setBullet>fire.bmp</setBullet>
+<setNoMoveAcc></setNoMoveAcc>
+</weapon>

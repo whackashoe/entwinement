@@ -1,0 +1,9 @@
+<weapon>
+<gun ammo="6" speed="1500" radius="1" density="1" reloadtime="240" delaytime="60" damage="100">Sniper</gun>
+<setBullet>sniper.png</setBullet>
+<setSniper mult="1.5"></setSniper>
+<setSniperLine></setSniperLine>
+<setFollow returnRadius="250" zDepth="600" zDepthMinus="1"></setFollow>
+<setGun>barretm82.bmp</setGun>
+<setSound distance="2400">sniper-fire.wav</setSound>
+</weapon>

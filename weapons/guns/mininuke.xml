@@ -1,0 +1,5 @@
+<weapon>
+<gun ammo="1" speed="1000000" radius="2" density="100" reloadtime="600" delaytime="30" damage="30000">Mini-Nuke</gun>
+<setAutomatic></setAutomatic>
+<setBoom radius="200"></setBoom>
+</weapon>

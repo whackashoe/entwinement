@@ -1,0 +1,8 @@
+<weapon>
+<gun ammo="4" speed="400" radius="5" density="1" restitution="0.7" reloadtime="20" delaytime="15" damage="35">Grenade</gun>
+<setBullet>grenade.png</setBullet> 
+<setGun>grenade.png</setGun>
+<setSound>nade-toss.wav</setSound>
+<setDelayExplode delay="60" radius="35" time="34" explodeOnSoldierImpact="true"></setDelayExplode>
+<setSpeedMultBasedOnMouse xMult="600.0" yMult="300.0"></setSpeedMultBasedOnMouse>
+</weapon>

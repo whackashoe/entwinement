@@ -1,0 +1,9 @@
+<weapon>
+<gun ammo="60" speed="500" radius="2" density="1" restitution="1.1" friction="0" reloadtime="30" delaytime="5" damage="9">Raygun</gun>
+<setBullet>raygun.png</setBullet>
+<setAutomatic></setAutomatic>
+<setSound distance="1200">machinegun-fire.wav</setSound>
+<setGun>mp5.bmp</setGun>
+<setRecoil amount="0.002"></setRecoil>
+<setDelayExplode delay="120" radius="5" time="34" explodeOnSoldierImpact="true"></setDelayExplode>
+</weapon>

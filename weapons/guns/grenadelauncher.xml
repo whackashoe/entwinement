@@ -1,0 +1,6 @@
+<weapon>
+<gun ammo="8" speed="840" radius="3" density="1" reloadtime="80" delaytime="35" damage="70">Grenade Launcher</gun>
+<setBullet>rocket.png</setBullet>
+<setBoom radius="40" time="60"></setBoom>
+<setGun>law.bmp</setGun>
+</weapon>

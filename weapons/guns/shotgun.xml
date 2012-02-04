@@ -1,0 +1,7 @@
+<weapon>
+<gun ammo="10" speed="190" radius="1.5" density="0.75" reloadtime="45" delaytime="25" damage="10">Shotgun</gun>
+<setBullet>shotgun.png</setBullet>
+<setShotgun shells="7"></setShotgun>
+<setSound distance="800">shotgun-fire.wav</setSound>
+<setNoMoveAcc></setNoMoveAcc>
+</weapon>

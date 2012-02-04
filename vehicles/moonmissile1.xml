@@ -1,0 +1,27 @@
+<vehicle>
+<basic health="10000" fireHealth="300" minParts="1" explosionMult="10" scale="0.3">missile</basic>
+<exits x1="-100" y1="-50" x2="-100" y2="-500"></exits>
+<forces xi="0.1" yi="1" xfd="0.2" yfd="1"></forces>
+<grapple x="0" y="120"></grapple>
+
+<part id="0" x="0" y="0" w="50" h="200" d="0.01">Missile</part>
+<part id="1" x="0" y="110" w="70" h="10" d="0.02">Landing Gear</part>
+<wheel id="2" x="0" y="0" r="100" d="0.0001">Collider</wheel>
+
+<setMissile id="0" x="0" y="-75" strength="3"></setMissile>
+<setHealth id="0" startingHealth="10000" fireHealth="150"></setHealth>
+<setCockpit id="0"></setCockpit>
+<setLandingGear id="1"></setLandingGear>
+<setHealth id="1" startingHealth="100" fireHealth="50"></setHealth>
+<setCollider id="2"></setCollider>
+
+<connection id="0" p1="0" p2="1"></connection>
+<connection id="1" p1="2" p2="1"></connection>
+
+<joint cId="0" x1="0" y1="0" x2="0" y2="0"></joint>
+<joint cId="0" x1="-20" y1="-50" x2="-20" y2="0"></joint>
+<joint cId="0" x1="20" y1="-50" x2="20" y2="0"></joint>
+
+<joint cId="1" x1="-20" y1="0" x2="-20" y2="0"></joint>
+<joint cId="1" x1="20" y1="0" x2="20" y2="-20"></joint>
+</vehicle>
