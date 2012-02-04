@@ -1,0 +1,49 @@
+Map repositories go here, they tie together:
+ gun lists found in the entwinement/weapons/lists directory,
+ maps found in the entwinement/maps/data directory,
+ scripts found in the entwinement/scripts directory, 
+ 
+ 
+You can set the width, height, and gravity with the worldData tag:
+<worldData width="10000" height="5000" gravityX="0" gravityY="100"></worldData>
+
+The width and height is evenly distributed to the left or right, 
+so in this example the world would span from -5000 -> 5000 for x coords and -2500 -> 2500 for y coords.
+Placing polygons or spawns outside these perimeters will cause errors and crashes that can be mysterious, 
+make sure to check if the world size is large enough for your maps.
+
+You can load map files with the mapData tag, src corresponds to file in /data directory
+<mapData src="1vs1Arena.PMS" xOffset="0" yOffset="0" scaleW="1.0" scaleH="1.0"></mapData>
+
+The xOffset and yOffset tags move everything that exists in the map that many units.
+Likewise scale affects the overall size, to turn maps upside down you may use -1 for scaleH,
+or -1 for scaleW to make them reverse.
+
+The gunlist tag loads the guns to use.
+<gunlist src="list1.xml"></gunlist>
+
+You may want to comment this tag out or omit it if you are loading a single xml map or
+loading guns from a script. If you load maps after placing this tag they may overwrite the gunlist.
+
+The script tag loads a script, and you may call initial functions from within it.
+<script src="splotch" version="1">
+splotch.createSplotch(0, 0, 10, 500)
+</script>
+
+This would load a script named splotch_v1.py from the scripts folder, note: you must specify version for loading.
+An object is created by the name of the script, so in this case you may call splotch functions from other scripts by
+prepending splotch to the function call as seen above.
+
+
+
+Example: maprepo.xml
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<repo>
+<worldData width="10000" height="5000" gravityX="0" gravityY="100"></worldData>
+<mapData src="map_layer1.PMS" xOffset="0" yOffset="0" scaleW="1.0" scaleH="1.0"></mapData>
+<mapData src="map_layer2.PMS" xOffset="-500" yOffset="-1000" scaleW="1.0" scaleH="-1.0"></mapData>
+<gunlist src="list1.xml"></gunlist>
+<script src="splotch" version="1">
+</script>
+</repo>
