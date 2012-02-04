@@ -1,0 +1,4 @@
+Scripts are to be named in the format (name)_v(version).py
+example: splotch_v1.py
+
+They are to be classes, and are indented with tabs not spaces. Look at splotch or instructions scripts for examples of how to use. You can look through the core folder for the api for now as it is still changing much.

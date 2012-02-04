@@ -1,0 +1,65 @@
+You can create weapon xml files. Here is copy pasted code, I'll document when I have time:
+
+
+if (innerTagName.equals("gun")) {
+      tempGun = new Gun(innerCurse.getContent(), innerCurse.getIntAttribute("ammo"), innerCurse.getIntAttribute("speed"), innerCurse.getFloatAttribute("radius"), innerCurse.getFloatAttribute("density"), innerCurse.getFloatAttribute("restitution"), innerCurse.getFloatAttribute("friction"), innerCurse.getIntAttribute("reloadtime"), innerCurse.getIntAttribute("delaytime"), innerCurse.getIntAttribute("damage"), choice);
+      //println("LOAD GUN: "+innerCurse.getContent());
+    } 
+    else if (innerTagName.equals("setSniper")) {
+      tempGun.setSniper(true, innerCurse.getFloatAttribute("sightMult"));
+    } 
+    else if (innerTagName.equals("setSniperLine")) {
+      tempGun.setSniperLine(true);
+    } 
+    else if (innerTagName.equals("setAutomatic")) {
+      tempGun.setAutomatic(true);
+    } 
+    else if (innerTagName.equals("setShotgun")) {
+      tempGun.setShotgun(true, innerCurse.getIntAttribute("shells"));
+    } 
+    else if (innerTagName.equals("setBoom")) {
+      tempGun.setBoom(true, innerCurse.getIntAttribute("radius"), innerCurse.getIntAttribute("timer"));
+    }
+    else if (innerTagName.equals("setDelayExplode")) {
+      tempGun.setDelayExplode(true, innerCurse.getIntAttribute("delay"), innerCurse.getIntAttribute("radius"), innerCurse.getIntAttribute("timer"), boolean(innerCurse.getStringAttribute("explodeOnSoldierImpact")));
+    }
+    else if (innerTagName.equals("setSpeedMultBasedOnMouse")) {
+      tempGun.setSpeedMultBasedOnMouse(true, innerCurse.getFloatAttribute("xMult"), innerCurse.getFloatAttribute("yMult"));
+    }
+    else if (innerTagName.equals("setBullet")) {
+      tempGun.setBullet(innerCurse.getContent());
+    } 
+    else if (innerTagName.equals("setSound")) {
+      tempGun.setSound(innerCurse.getContent(), innerCurse.getFloatAttribute("distance"));
+    } 
+    else if (innerTagName.equals("setGun")) {
+      tempGun.setGun(innerCurse.getContent());
+    } 
+    else if (innerTagName.equals("setFlame")) {
+      tempGun.setFlame(true);
+    } 
+    else if (innerTagName.equals("setNoMoveAcc")) {
+      tempGun.setNoMoveAcc(true);
+    } 
+    else if (innerTagName.equals("setControllable")) {
+      tempGun.setControllable(true, innerCurse.getFloatAttribute("strength"));
+    } 
+    else if (innerTagName.equals("setFollow")) {
+      tempGun.setFollow(true, innerCurse.getFloatAttribute("returnRadius"), innerCurse.getFloatAttribute("zDepth"), innerCurse.getFloatAttribute("zDepthMinus"));
+    } 
+    else if (innerTagName.equals("setLifespan")) {
+      tempGun.setLifeSpan(Integer.parseInt(innerCurse.getContent()));
+    } 
+    else if (innerTagName.equals("setParticle")) {
+      tempGun.setParticle(true, innerCurse.getIntAttribute("type"), innerCurse.getFloatAttribute("radius_min"), innerCurse.getFloatAttribute("radius_max"));
+    } 
+    else if (innerTagName.equals("setBink")) {
+      tempGun.setBink(innerCurse.getFloatAttribute("amount"));
+    } 
+    else if (innerTagName.equals("setRecoil")) {
+      tempGun.setRecoil(innerCurse.getFloatAttribute("amount"));
+    } 
+    else if (innerTagName.equals("setAccuracy")) {
+      tempGun.setAccuracy(innerCurse.getFloatAttribute("amount"));
+    }
+  }

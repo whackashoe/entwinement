@@ -1,0 +1,22 @@
+Gunlists are loaded by map files. 
+
+You encase the guns you want to add between <guns> tags.
+To load a gun use the <gun> tag
+<gun choice="true">pistol.xml</gun>
+
+Choice indicates that you can choose it from menu, and the content is the weapon name. Here is list1.xml for example.
+
+<guns>
+<gun choice="true">pistol.xml</gun>
+<gun choice="true">machinegun.xml</gun>
+<gun choice="true">ak47.xml</gun>
+<gun choice="true">aug.xml</gun>
+<gun choice="true">shotgun.xml</gun>
+<gun choice="true">sniper.xml</gun>
+<gun choice="true">grenadelauncher.xml</gun>
+<gun choice="false">mininuke.xml</gun>
+<gun choice="false">flamethrower.xml</gun>
+<gun choice="true">grenade.xml</gun>
+<gun choice="true">raygun.xml</gun>
+<gun choice="true">deagles.xml</gun>
+</guns>

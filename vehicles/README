@@ -1,0 +1,105 @@
+You can create vehicle.xml files. Here is copy pasted code, I'll document when I have time:
+
+  if (pieceName.equals("basic")) {
+      vh.setHealth(curse.getFloatAttribute("health"), curse.getFloatAttribute("fireHealth"));
+      vh.setMinParts(curse.getIntAttribute("minParts"));
+      vh.setExplodeMult(curse.getFloatAttribute("explosionMult"));
+      vh.setScale(curse.getFloatAttribute("scale"));
+      if (curse.getFloatAttribute("maxVelo") < 1) vh.setMaxVelo(1000.0);
+      else vh.setMaxVelo(curse.getFloatAttribute("maxVelo"));
+      vh.setName(src_);
+    } 
+    else if (pieceName.equals("forces")) {
+      vh.setForces(curse.getFloatAttribute("xi"), curse.getFloatAttribute("yi"), curse.getFloatAttribute("xd"), curse.getFloatAttribute("yd"));
+    } 
+    else if (pieceName.equals("grapple")) {
+      vh.setGrapple(curse.getFloatAttribute("x"), curse.getFloatAttribute("y"));
+    } 
+    else if (pieceName.equals("exits")) {
+      vh.setExits(curse.getFloatAttribute("x1"), curse.getFloatAttribute("y1"), curse.getFloatAttribute("x2"), curse.getFloatAttribute("y2"));
+    } 
+    else if (pieceName.equals("part")) {
+      vh.addPart(curse.getFloatAttribute("x"), curse.getFloatAttribute("y"), curse.getFloatAttribute("w"), curse.getFloatAttribute("h"), curse.getFloatAttribute("d"));
+    } 
+    else if (pieceName.equals("wheel")) {
+      vh.addPart(curse.getFloatAttribute("x"), curse.getFloatAttribute("y"), curse.getFloatAttribute("r"), curse.getFloatAttribute("d"));
+    } 
+    else if (pieceName.equals("poly")) {
+      vh.addPart(curse.getFloatAttribute("x1"), curse.getFloatAttribute("y1"), curse.getFloatAttribute("x2"), curse.getFloatAttribute("y2"), curse.getFloatAttribute("x3"), curse.getFloatAttribute("y3"), curse.getFloatAttribute("de"));
+    } 
+    else if (pieceName.equals("setPropellor")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setPropellor(true, curse.getFloatAttribute("xf"), curse.getFloatAttribute("yf"), curse.getFloatAttribute("lift"));
+    } 
+    else if (pieceName.equals("setMissile")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setMissile(true, curse.getFloatAttribute("x"), curse.getFloatAttribute("y"), curse.getFloatAttribute("strength"));
+    } 
+    else if (pieceName.equals("setCockpit")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setCockpit(true);
+    } 
+    else if (pieceName.equals("setFrame")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setFrame(true);
+    } 
+    else if (pieceName.equals("setWheel")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setWheel(true, curse.getFloatAttribute("xStrength"), curse.getFloatAttribute("rotateStrength"), curse.getFloatAttribute("rotateMax"));
+    } 
+    else if (pieceName.equals("setRotateByKeys")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setRotateByKeys(boolean(curse.getContent()));
+    } 
+    else if (pieceName.equals("setLandingGear")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setLandingGear(true);
+    } 
+    else if (pieceName.equals("setCollider")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setCollider(true);
+    } 
+    else if (pieceName.equals("setGun")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setGunPos(true, curse.getFloatAttribute("gunX"), curse.getFloatAttribute("gunY"));
+      if (boolean(curse.getStringAttribute("custom"))) {
+        ph.customGun = true;
+        game.gunData = (Gun[]) append(game.gunData, loadIndividualGun(curse.getContent(), false));
+        ph.setCustomGun(true, game.gunData.length-1);
+      }
+    } 
+    else if (pieceName.equals("setHealth")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setHealth(curse.getFloatAttribute("startingHealth"), curse.getFloatAttribute("fireHealth"));
+    } 
+    else if (pieceName.equals("setCollideId")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setCollideId(int(curse.getContent()));
+    } 
+    else if (pieceName.equals("setImage")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.setImage(curse.getStringAttribute("src"), curse.getFloatAttribute("scale"));
+    } 
+    else if (pieceName.equals("addPoly")) {
+      Vehicle.Part ph = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      ph.addPoly(curse.getFloatAttribute("x1"), curse.getFloatAttribute("y1"), curse.getFloatAttribute("z1"), curse.getFloatAttribute("x2"), curse.getFloatAttribute("y2"), curse.getFloatAttribute("z2"), curse.getFloatAttribute("x3"), curse.getFloatAttribute("y3"), curse.getFloatAttribute("z3"), curse.getIntAttribute("r"), curse.getIntAttribute("g"), curse.getIntAttribute("b"), curse.getIntAttribute("a"));
+    } 
+    else if (pieceName.equals("polycustomvertex")) {
+      Vehicle.Part parth = (Vehicle.Part) vh.parts.get(curse.getIntAttribute("id"));
+      Polygon ph = (Polygon) parth.polyData.get(curse.getIntAttribute("pId"));
+      ph.setVColours(0, curse.getIntAttribute("r0"), curse.getIntAttribute("g0"), curse.getIntAttribute("b0"), curse.getIntAttribute("a0"));
+      ph.setVColours(1, curse.getIntAttribute("r1"), curse.getIntAttribute("g1"), curse.getIntAttribute("b1"), curse.getIntAttribute("a1"));
+      ph.setVColours(2, curse.getIntAttribute("r2"), curse.getIntAttribute("g2"), curse.getIntAttribute("b2"), curse.getIntAttribute("a2"));
+    } 
+    else if (pieceName.equals("connection")) {
+      vh.addConnection(curse.getIntAttribute("type"), curse.getIntAttribute("p1"), curse.getIntAttribute("p2"));
+    } 
+    else if (pieceName.equals("joint")) {
+      vh.addJoint(curse.getIntAttribute("cId"), curse.getFloatAttribute("x1"), curse.getFloatAttribute("y1"), curse.getFloatAttribute("x2"), curse.getFloatAttribute("y2"), curse.getFloatAttribute("freq"));
+    } 
+    else if (pieceName.equals("prismatic")) {
+      vh.addJoint(curse.getIntAttribute("cId"), curse.getFloatAttribute("anchorX"), curse.getFloatAttribute("anchorY"), curse.getFloatAttribute("axisX"), curse.getFloatAttribute("axisY"), boolean(curse.getStringAttribute("limitTranslation")), curse.getFloatAttribute("lowerTranslation"), curse.getFloatAttribute("upperTranslation"));
+    } 
+    else if (pieceName.equals("revolute")) {
+      vh.addJoint(curse.getIntAttribute("cId"), curse.getFloatAttribute("anchorX"), curse.getFloatAttribute("anchorY"), boolean(curse.getStringAttribute("limitTranslation")), curse.getFloatAttribute("lowerTranslation"), curse.getFloatAttribute("upperTranslation"), curse.getFloatAttribute("motorSpeed"), curse.getFloatAttribute("motorTorque"), boolean(curse.getStringAttribute("runningAlways")));
+    }
