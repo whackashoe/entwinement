@@ -335,7 +335,7 @@ void loadMapRepo(String src) {
       if (curse.getContent() != null) tempScriptAdditional += curse.getContent();
     }
   }
-
+  
   if (!playingOnline) {
     if (tempScriptSrc.length > 0) {
       println("Compiling ...");
@@ -362,6 +362,7 @@ void loadMapRepo(String src) {
     game.meCast.setMe(true);
     game.meCast.respawn(meTempSpawn.x, meTempSpawn.y);
   }
+  
   playing = true;
 
   if (game != null) {
@@ -376,7 +377,7 @@ void loadMapRepo(String src) {
     NodeMap nm = new NodeMap(width-200, 200, 200/mapW, 200/mapH);
     game.hud.minimap = nm.loadFromCurrent();
   }
-
+  
   Spawn meTempSpawn = game.getSoldierSpawn();
   game.soldierData.add(new Soldier(meTempSpawn.x, meTempSpawn.y));
   game.meCast = (Soldier) game.soldierData.get(game.soldierData.size()-1);

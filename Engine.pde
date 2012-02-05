@@ -465,15 +465,6 @@ class Engine {
           exitProgram();
         }
 
-        if (jython != null && !playingOnline) {
-          if (jython.alive) jython.update();
-          else jython = null;
-        }
-        /*if(game.meCast == null) {
-         popMatrix();
-         return;
-         }*/
-
 
         timePlayedInMap += 0.1;
         if (settings.frameCheck && frameCount % 30 == 0) checkFramerate();
@@ -664,7 +655,12 @@ class Engine {
       popMatrix();
       return;
     }
+    
     if (jython != null) {
+      if (!playingOnline) {
+        if (jython.alive) jython.update();
+        else jython = null;
+      }
       if (jython.toWorldDraw.length > 0) {
         drawFromScript(0);
       }
