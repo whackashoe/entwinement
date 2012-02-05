@@ -40,6 +40,7 @@ gameType = 0				# set to gametype(solo, dm, tm, cp, koth, ctf, etc..)
 gamePaused = 'false'
 enginePoint = 0				# set to engine object of game for lookups
 
+
 # CORE GAME FUNCTIONS
 # ****************************************************************** #
 # update() is called every game loop from main, this is the roots of #

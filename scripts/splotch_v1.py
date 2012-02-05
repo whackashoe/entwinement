@@ -6,6 +6,7 @@ Demo for simple procedurally generated maps
 
 class splotch:
 	requestMouseKeyboard = 'false'
+	start = 0
 	
 	def __init__(this):
 		#global enginePoint
@@ -60,8 +61,13 @@ class splotch:
 		
 		print str(x) + "-" + str(y)
 		
-	def update(self):
-		java.lang.System.out.println(d_soldiers[0])
+	def update(this):
+		if this.start == 0:
+			s = getSoldiers()
+			for i in range(len(s)):
+				s[i].teleport(0, -500)
+			
+			this.start += 1
 		
 	def onSoldierRespawn(this, id):
 		getSoldierById(id).changeAttachment(0, 1000)
