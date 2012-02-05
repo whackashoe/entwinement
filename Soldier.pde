@@ -360,15 +360,15 @@ class Soldier {
   }
   
   void checkDeathTrail() {
-    //if(frameCount % 3 == 0) deathTrailPoints.add(new PVector(self.getX(), self.getY(), noise(self.getX())*10));  //random
-    if(frameCount % 3 == 0) deathTrailPoints.add(new PVector(self.getX(), self.getY(), map(constrain(abs(self.getVelocityX())+abs(self.getVelocityY()), 0, 700), 700, 1, 1, 8)));
+    //if(frameCount % 3 == 0) deathTrailPoints.add(new Vec2D(self.getX(), self.getY(), noise(self.getX())*10));  //random
+    if(frameCount % 3 == 0) deathTrailPoints.add(new Vec3D(self.getX(), self.getY(), map(constrain(abs(self.getVelocityX())+abs(self.getVelocityY()), 0, 700), 700, 1, 1, 8)));
     stroke(deathColor);
     if(!alive) stroke(deathColor >> 16 & 0xFF, deathColor >> 8 & 0xFF, deathColor & 0xFF, 150);
     float pre = 0;
     
     for(int i=1; i<deathTrailPoints.size(); i++) {
-     PVector p1 = (PVector) deathTrailPoints.get(i);
-     PVector p2 = (PVector) deathTrailPoints.get(i-1);     
+     Vec3D p1 = (Vec3D) deathTrailPoints.get(i);
+     Vec3D p2 = (Vec3D) deathTrailPoints.get(i-1);     
      //strokeWeight(map(health, 100, 0, 1, self.getSize()));
      strokeWeight(p2.z);
      line(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
@@ -612,19 +612,19 @@ class Soldier {
     } else if(curAttachmentAmmo > 0) {
       if(!playingOnline) {
         grappleAlive = true;
-        PVector grapplePos;
-        PVector grappleForce;
+        Vec2D grapplePos;
+        Vec2D grappleForce;
         
          if(!driving) {
-           grapplePos = new PVector(self.getX()+cos(gunAngle)*self.getSize()*2, self.getY()+sin(gunAngle)*self.getSize()*2);
+           grapplePos = new Vec2D(self.getX()+cos(gunAngle)*self.getSize()*2, self.getY()+sin(gunAngle)*self.getSize()*2);
         } else {
-          grapplePos = new PVector(curCar.getCockpitPos().x+curCar.grappleX, curCar.getCockpitPos().y+curCar.grappleY);
+          grapplePos = new Vec2D(curCar.getCockpitPos().x+curCar.grappleX, curCar.getCockpitPos().y+curCar.grappleY);
         }
         
         float gxf = cos(gunAngle)*(20000/(width/2));
         float gyf = sin(gunAngle)*(20000/(height/2));
         //println(gxf+" "+gyf);
-        grappleForce = new PVector(gxf*abs(mouseX-width/2), gyf*abs(mouseY-height/2));
+        grappleForce = new Vec2D(gxf*abs(mouseX-width/2), gyf*abs(mouseY-height/2));
         
         if(!driving) {
           game.grappleData.add(new Grapple(self, grapplePos, grappleForce));
@@ -793,8 +793,8 @@ class Soldier {
         stroke(200, 0, 0, 150);
         strokeWeight(2);
         
-        PVector point1 = new PVector(self.getX(), self.getY());
-        PVector point2 = new PVector(self.getX()+(game.gunData[curGun.gun].speed*cos(gunAngle)*3), self.getY()+(game.gunData[curGun.gun].speed*sin(gunAngle)*3));
+        Vec2D point1 = new Vec2D(self.getX(), self.getY());
+        Vec2D point2 = new Vec2D(self.getX()+(game.gunData[curGun.gun].speed*cos(gunAngle)*3), self.getY()+(game.gunData[curGun.gun].speed*sin(gunAngle)*3));
         
         line(0, 0, game.gunData[curGun.gun].speed*cos(gunAngle)*3, game.gunData[curGun.gun].speed*sin(gunAngle)*3);  //REMOVE AND BELOW IS SEMIFIX
         noStroke();
@@ -945,11 +945,11 @@ class Soldier {
       grappleCast.kill();
       grappleAlive = false;
     }
-    PVector aVelo = curCar.getCockpitVelo();
-    PVector pos = curCar.someoneExiting(door_);
+    Vec2D aVelo = curCar.getCockpitVelo();
+    Vec2D pos = curCar.someoneExiting(door_);
     newSelf(pos.x, pos.y);
     //if(grappleAlive && grappleCast.attached) { grappleCast.switchBody(self); }
-    PVector leaveForce = curCar.exitForce(door_);
+    Vec2D leaveForce = curCar.exitForce(door_);
     self.addForce(leaveForce.x, leaveForce.y);
     self.adjustVelocity(aVelo.x, aVelo.y);
   }
@@ -1115,22 +1115,22 @@ class Soldier {
     return -1;  //FACE RIGHT
   }
   
-  PVector getVelocity() {
-    PVector v = new PVector(0, 0);
+  Vec2D getVelocity() {
+    Vec2D v = new Vec2D(0, 0);
     if(!driving) {
-      v.set(self.getVelocityX(), self.getVelocityY(), 0);
+      v.set(self.getVelocityX(), self.getVelocityY());
     } else {
       //GET VELOCITY OF VEHICLE
-      PVector vehV = curCar.getCockpitVelo();
-      v.set(vehV.x, vehV.y, 0);
+      Vec2D vehV = curCar.getCockpitVelo();
+      v.set(vehV.x, vehV.y);
     }
     return v;
   }
   
-  PVector getPosition() {
-    PVector p = new PVector(0, 0);
+  Vec2D getPosition() {
+    Vec2D p = new Vec2D(0, 0);
     if(!driving) {
-      p.set(self.getX(), self.getY(), 0);
+      p.set(self.getX(), self.getY());
     } else {
       //GET VELOCITY OF VEHICLE
       if(curCar == null || curCar.getCockpitPos() == null) return p;  //helps with bug of after veh exploding causing nullpointer

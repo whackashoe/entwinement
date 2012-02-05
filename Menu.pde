@@ -230,9 +230,16 @@ class Menu {
             fill(i*18, 255-(i*10), i*i);
             if(mousePressed && (mouseButton == LEFT)) {
               game = new Engine(mapChildren[i]);
-              game.setMenuMode(true);
-              loadMapRepo(mapChildren[i]);
               
+              game.setMenuMode(false);
+              mainMenu = false;
+              
+              choosingMaps = false;
+              loadMapRepo(mapChildren[i]);
+              return;
+              
+              
+              /*
               rsTrays.clear();
               RSelectionTray ph = null;  //POINTER FOR SELECTING TRAYS TO ADD ELEMENTS
               
@@ -315,8 +322,9 @@ class Menu {
               ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
               ph.addArrowToggles(botToggle);
               ph.setBotTray(true);
+              */
+            //  choosingMaps = false;
               
-              choosingMaps = false;
             }
           }
           text(mapChildren[i], 0, height/24+50+i*18+offsetY);  //FINALLY DRAW NAME OF MAP

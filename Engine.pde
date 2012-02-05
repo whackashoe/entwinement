@@ -498,7 +498,8 @@ class Engine {
           ph.update();
           if (!ph.alive) ragdollData.remove(i);
         }
-
+        
+        println(meCast.self.getX());
         for (int i=0; i<soldierData.size(); i++) {
           Soldier ph = (Soldier) soldierData.get(i);
           ph.update();

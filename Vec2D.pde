@@ -10,6 +10,15 @@ class Vec2D {
   void add(Vec2D a) {
     this.x += a.x;
     this.y += a.y;
-    //return new Vec2D(this.x += a.x, this.y += a.y);
+  }
+  
+  void set(float x, float y) {
+    this.x = x;
+    this.y = y;
+  }
+  
+  void set(Vec2D a) {
+    this.x = a.x;
+    this.y = a.y;
   }
 }

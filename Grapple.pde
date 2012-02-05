@@ -9,7 +9,7 @@ class Grapple {
   int id;
   int health;
   
-  Grapple(FBody body1_, PVector pos_, PVector force_) {
+  Grapple(FBody body1_, Vec2D pos_, Vec2D force_) {
     alive = true;
     health = 30;
     body1 = (FBody) body1_;

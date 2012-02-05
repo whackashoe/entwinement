@@ -286,12 +286,12 @@ class Spawn {
   
   //for new vehicle loaded from file
   void spawnVehicle(float tX_, float tY_) {
-    game.vehicleData.add(new Vehicle(new PVector(tX_, tY_), subType));
+    game.vehicleData.add(new Vehicle(new Vec2D(tX_, tY_), subType));
     childCast = (Object) game.vehicleData.get(game.vehicleData.size()-1);
   }
   
   void spawnVehicle(float x_, float y_, int vId_) {
-    game.vehicleData.add(new Vehicle(new PVector(x_, y_), vId_));
+    game.vehicleData.add(new Vehicle(new Vec2D(x_, y_), vId_));
     childCast = (Object) game.vehicleData.get(game.vehicleData.size()-1);
   }
 

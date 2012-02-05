@@ -248,7 +248,7 @@ class JyInt {
           
         } else if(piece[1].equals("v") || piece[1].equals("vehicle")) {
           if(baseVehicleData.size() > 0) {
-            game.vehicleData.add(new Vehicle(new PVector(Integer.parseInt(piece[3]), Integer.parseInt(piece[4])), constrain(Integer.parseInt(piece[2]), 0, baseVehicleData.size()-1)));
+            game.vehicleData.add(new Vehicle(new Vec2D(Integer.parseInt(piece[3]), Integer.parseInt(piece[4])), constrain(Integer.parseInt(piece[2]), 0, baseVehicleData.size()-1)));
             Vehicle ph = (Vehicle) game.vehicleData.get(game.vehicleData.size()-1);
             //println("**VEHICLE "+ph.name+" ADDED**");
           } else {

@@ -570,9 +570,9 @@ void addGrappleFromServer(byte[] data_) {
   
   Soldier sh = (Soldier) getSoldierById(toInt(id_));
   if(!sh.driving) {
-    game.grappleData.add(new Grapple(sh.self, new PVector(x, y), new PVector(xf, yf)));
+    game.grappleData.add(new Grapple(sh.self, new Vec2D(x, y), new Vec2D(xf, yf)));
   } else {
-    game.grappleData.add(new Grapple(sh.curCar.getCockpit(), new PVector(x, y), new PVector(xf, yf)));
+    game.grappleData.add(new Grapple(sh.curCar.getCockpit(), new Vec2D(x, y), new Vec2D(xf, yf)));
   }
   sh.grappleCast = (Grapple) game.grappleData.get(game.grappleData.size()-1);
   sh.grappleCast.setId(toInt(id_));
@@ -929,7 +929,7 @@ void addVehicleFromServer(byte[] data_) {
     id_[2] = data_[14];
     id_[3] = data_[15];
     
-    Vehicle ph = new Vehicle(new PVector(toFloat(x_), toFloat(y_)), toInt(type_));
+    Vehicle ph = new Vehicle(new Vec2D(toFloat(x_), toFloat(y_)), toInt(type_));
     ph.setId(toInt(id_));
     game.vehicleData.add(ph);
     println("vehicle "+toInt(id_)+" added");

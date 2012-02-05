@@ -49,12 +49,9 @@ class Vehicle {
     connections = new ArrayList();
   }
   
-  Vehicle(PVector pos_, int type_) {
+  Vehicle(Vec2D pos_, int type_) {
     type = type_;
     Vehicle loadCast = (Vehicle) baseVehicleData.get(type_);
-    
-    float tX = pos_.x;
-    float tY = pos_.y;
     
     alive = true;
     id = int(random(0, Integer.MAX_VALUE));
@@ -90,23 +87,33 @@ class Vehicle {
       Vehicle.Part partCast = (Vehicle.Part) loadCast.parts.get(i);
       if(partCast.square) {
         if(!game.upsideDownMode) {
-          parts.add(new Part(tX+partCast.xOff, tY+partCast.yOff, partCast.p.getWidth(), partCast.p.getHeight(), partCast.den, this));
+          parts.add(new Part(pos_.x+partCast.xOff, pos_.y+partCast.yOff, partCast.p.getWidth(), partCast.p.getHeight(), partCast.den, this));
         } else {
-          parts.add(new Part(tX+partCast.xOff, tY-partCast.yOff, partCast.p.getWidth(), partCast.p.getHeight(), partCast.den, this));
+          parts.add(new Part(pos_.x+partCast.xOff, pos_.y-partCast.yOff, partCast.p.getWidth(), partCast.p.getHeight(), partCast.den, this));
         }
         //parts.add(new Part(tX+partCast.xOff, tY+partCast.yOff, partCast.p.getWidth(), partCast.p.getHeight(), partCast.den, this));
       } else if(partCast.wheel) {
         if(!game.upsideDownMode) {
-          parts.add(new Part(tX+partCast.xOff, tY+partCast.yOff, partCast.w.getSize(), partCast.den, this));
+          parts.add(new Part(pos_.x+partCast.xOff, pos_.y+partCast.yOff, partCast.w.getSize(), partCast.den, this));
         } else {
-          parts.add(new Part(tX+partCast.xOff, tY-partCast.yOff, partCast.w.getSize(), partCast.den, this));
+          parts.add(new Part(pos_.x+partCast.xOff, pos_.y-partCast.yOff, partCast.w.getSize(), partCast.den, this));
         }
         //parts.add(new Part(tX+partCast.xOff, tY+partCast.yOff, partCast.w.getSize(), partCast.den, this));
       } else if(partCast.polygon) {
         if(!game.upsideDownMode) {
-          parts.add(new Part(tX+partCast.polyVertexX1, tY+partCast.polyVertexY1, tX+partCast.polyVertexX2, tY+partCast.polyVertexY2, tX+partCast.polyVertexX3, tY+partCast.polyVertexY3, partCast.den, this));
+          parts.add(new Part(
+            pos_.x+partCast.polyVertexX1, pos_.y+partCast.polyVertexY1,
+            pos_.x+partCast.polyVertexX2, pos_.y+partCast.polyVertexY2,
+            pos_.x+partCast.polyVertexX3, pos_.y+partCast.polyVertexY3,
+            partCast.den, this
+          ));
         } else {
-          parts.add(new Part(tX+partCast.polyVertexX1, tY-partCast.polyVertexY1, tX+partCast.polyVertexX2, tY-partCast.polyVertexY2, tX+partCast.polyVertexX3, tY-partCast.polyVertexY3, partCast.den, this));
+          parts.add(new Part(
+            pos_.x+partCast.polyVertexX1, pos_.y-partCast.polyVertexY1, 
+            pos_.x+partCast.polyVertexX2, pos_.y-partCast.polyVertexY2, 
+            pos_.x+partCast.polyVertexX3, pos_.y-partCast.polyVertexY3, 
+            partCast.den, this
+          ));
         }
         //parts.add(new Part(tX+partCast.xOff, tY+partCast.yOff, partCast.w.getSize(), partCast.den, this));
       }
@@ -197,18 +204,18 @@ class Vehicle {
     return false;
   }
   
-  PVector getCockpitPos() {
+  Vec2D getCockpitPos() {
     for(int i=0; i<parts.size(); i++) {
       Part ph = (Part) parts.get(i);
-      if(ph.cockpit) return new PVector(ph.getBody().getX(), ph.getBody().getY());
+      if(ph.cockpit) return new Vec2D(ph.getBody().getX(), ph.getBody().getY());
     }
     return null;
   }
   
-  PVector getCockpitVelo() {
+  Vec2D getCockpitVelo() {
     for(int i=0; i<parts.size(); i++) {
       Part ph = (Part) parts.get(i);
-      if(ph.cockpit) return new PVector(ph.getBody().getVelocityX(), ph.getBody().getVelocityY()); 
+      if(ph.cockpit) return new Vec2D(ph.getBody().getVelocityX(), ph.getBody().getVelocityY()); 
     }
     return null;
   }
@@ -350,7 +357,7 @@ class Vehicle {
     return fire;
   }
   
-  PVector someoneExiting(boolean door_) {
+  Vec2D someoneExiting(boolean door_) {
     
     //IF ENTIRE VEHICLE IS ENGULFED THEN BE ON FIRE NO MATTER WHAT, OTHERWISE IF COCKPIT MAKE IT PERCENTAGE?
     if(health < fireHealth || cockpitFire()) soldierCast.startFire();
@@ -360,13 +367,13 @@ class Vehicle {
     xForce = 0;
     yForce = 0;
     
-    if(door_) return new PVector(getCockpitPos().x+exitX1, getCockpitPos().y+exitY1);  //FIX:::CAUSES CRASH ON EXPLOSION WITH MOONBUG
-    else return new PVector(getCockpitPos().x+exitX2, getCockpitPos().y+exitY2);
+    if(door_) return new Vec2D(getCockpitPos().x+exitX1, getCockpitPos().y+exitY1);  //FIX:::CAUSES CRASH ON EXPLOSION WITH MOONBUG
+    else return new Vec2D(getCockpitPos().x+exitX2, getCockpitPos().y+exitY2);
   }
   
-  PVector exitForce(boolean door_) {
-    if(door_) return new PVector(0, -400);
-    else return new PVector(0, -3000);
+  Vec2D exitForce(boolean door_) {
+    if(door_) return new Vec2D(0, -400);
+    else return new Vec2D(0, -3000);
   }
   
   
@@ -763,7 +770,7 @@ class Vehicle {
       health = health_;
     }
     
-    PVector getPos() { return new PVector(getBody().getX(), getBody().getY()); }
+    Vec2D getPos() { return new Vec2D(getBody().getX(), getBody().getY()); }
     
     void update(GL gl) {
       if(!fv.alive || health < 0 || connectCasts.size() == 0) alive = false;
@@ -879,10 +886,10 @@ class Vehicle {
       else return w;
     }
     
-    PVector getBodyScale() {
-      if(square) return new PVector(p.getWidth(), p.getHeight(), 1);
-      else if(polygon) return new PVector(1, 1, 1);
-      else return new PVector(w.getSize(), w.getSize(), 1);
+    Vec2D getBodyScale() {
+      if(square) return new Vec2D(p.getWidth(), p.getHeight());
+      else if(polygon) return new Vec2D(1, 1);
+      else return new Vec2D(w.getSize(), w.getSize());
     }
 	
     void render(GL gl) {
@@ -905,8 +912,8 @@ class Vehicle {
           fill(255);
           tint(255);
           //scaleByBody();
-          PVector s = getBodyScale();
-          scale(s.x, s.y, s.z);
+          Vec2D s = getBodyScale();
+          scale(s.x, s.y);
           
           beginShape();
             texture(img);
@@ -918,8 +925,8 @@ class Vehicle {
         } else {
           if(square) {
             //scaleByBody();
-            PVector s = getBodyScale();
-            scale(s.x, s.y, s.z);
+            Vec2D s = getBodyScale();
+            scale(s.x, s.y);
             
             beginShape();
               vertex(-0.5, -0.5);
@@ -929,8 +936,8 @@ class Vehicle {
             endShape();
           } else if(wheel) {
             //scaleByBody();
-            PVector s = getBodyScale();
-            scale(s.x, s.y, s.z);
+            Vec2D s = getBodyScale();
+            scale(s.x, s.y);
           
             ellipse(0, 0, 1, 1);
           } else if(polygon) {
