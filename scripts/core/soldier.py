@@ -122,7 +122,10 @@ def getSoldierById(id):
 		s = d_soldiers[n]
 		if s.id == id:
 			return s
-	
+
+def getSoldiers():
+	global d_soldiers
+	return d_soldiers
 
 def getSoldierCount():
 	global d_soldiers
