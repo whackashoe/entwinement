@@ -1,4 +1,4 @@
-You can create weapon xml files. Here is copy pasted code, I'll document when I have time:
+You can create weapon xml files. Here is the different attributes you may add, the first tag "<gun>" is required.
 
 <gun ammo="int" speed="int" radius="float" density="float" restitution="float" friction="float" reloadtime="int" delaytime="int" damage="int">name of gun</gun>
 
