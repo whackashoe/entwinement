@@ -184,7 +184,7 @@ class Particle {
   }
   
   void setAsExplosion() {
-    if(radius == -1) radius = random(20, 30);
+    /*if(radius == -1) radius = random(20, 30);
     z = 2;
     aliveTimer = int(random(30, 45));
     tAlphaTimer = int(random(20, 40));
@@ -214,6 +214,40 @@ class Particle {
       particles[i][5] = atan2(particles[i][1]-y, particles[i][0]-x);  //movement direction
       particles[i][6] = random(0.0, 0.0);  //zspeed
       particles[i][7] = random(5);  //xyspeed
+      
+      if(particles[i][2] < 0) particles[i][4] /= 2.5;
+    }
+    */
+    if(radius == -1) radius = random(20, 30);
+    z = 2;
+    aliveTimer = int(random(75, 120));
+    tAlphaTimer = int(random(20, 40));
+    
+    colour = int(random(100, 255));
+    alphaT = int(random(10, 50));
+    alphaTimerMinus = .4;
+    zMinus = 5;
+    
+    drawEllipse = false;
+    ellipseScale = random(2);
+    
+    drawStroke = true;
+    strokeColor = new int[4];
+    strokeColor[0] = 255;
+    strokeColor[1] = int(random(120, 155));
+    strokeColor[2] = int(random(120, 155));
+    strokeColor[3] = 50;
+    
+    particles = new float[int(random(10, 20))][8];
+    for(int i=0; i<particles.length; i++) {
+      particles[i][0] = random(-radius, radius);  //X
+      particles[i][1] = random(-radius, radius);  //Y
+      particles[i][2] = random(-5, 10);  //Z
+      particles[i][3] = random(radius*0.8, radius*1.2);  //RADIUS
+      particles[i][4] = random(colour);  
+      particles[i][5] = atan2(particles[i][1]-y, particles[i][0]-x);  //movement direction
+      particles[i][6] = random(3, 8);  //zspeed
+      particles[i][7] = random(1);  //xyspeed
       
       if(particles[i][2] < 0) particles[i][4] /= 2.5;
     }
