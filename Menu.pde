@@ -80,17 +80,7 @@ class Menu {
       showMain();
     } else {
       if(maps) {
-        if(choosingMaps) {
-          showMaps();
-        } else {
-          background(0);
-          pushMatrix();
-            game.update(gl);
-          popMatrix();
-          hint(DISABLE_DEPTH_TEST);
-          camera();
-          showMapOptions();
-        }
+        showMaps();
       } else if(servers) {
         showServers();
       } else if(options) {
@@ -222,109 +212,18 @@ class Menu {
       } else {
         textFont(FONTmaps, 12);
         for(int i=0; i<mapChildren.length; i++) {
-          // Get filenagame.meCast of file or directory
+          // Get filename of file or directory
           String filenameCast = mapChildren[i];
           fill(255);
-          //CHECK MOUSE POS
           if(mouseX > x && mouseX < width/2 && mouseX<x+width/3 && mouseY<height/24+62+i*18+offsetY && mouseY>height/24+50+i*18+offsetY) {
             fill(i*18, 255-(i*10), i*i);
             if(mousePressed && (mouseButton == LEFT)) {
               game = new Engine(mapChildren[i]);
-              
+              loadMapRepo(mapChildren[i]);
               game.setMenuMode(false);
               mainMenu = false;
-              
               choosingMaps = false;
-              loadMapRepo(mapChildren[i]);
               return;
-              
-              
-              /*
-              rsTrays.clear();
-              RSelectionTray ph = null;  //POINTER FOR SELECTING TRAYS TO ADD ELEMENTS
-              
-              ArrayList modeBoxes = new ArrayList();
-              ArrayList typeToggle = new ArrayList();
-              
-              for(int m=0; m<modes.length; m++) {
-                modeBoxes.add(new RadioBox(60+85*m, 180, false));
-                RadioBox rb = (RadioBox) modeBoxes.get(modeBoxes.size()-1);
-                rb.on = settings.defaultGameMode[m];
-              }
-              typeToggle.add(new ArrowToggle((modes.length*85)/2, 130, types));
-              ArrowToggle ar = (ArrowToggle) typeToggle.get(typeToggle.size()-1);
-              ar.curSelect = settings.defaultGameType;
-              
-              rsTrays.add(new RSelectionTray(0, 100, 100+modes.length*85, 100, "MODES:", color(0, 200)));
-              ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
-              ph.addRadioBoxes(modeBoxes, modes);
-              ph.addArrowToggles(typeToggle);
-
-              String[] wepLists = {"DEFAULT"};  //WEAPON LISTS
-              File wListDir = new File(sketchPath+"/weapons/lists");  //LOAD ALL WEAPON LISTS FROM 
-              String[] wListChildren = wListDir.list();
-              for(int s=0; s<wListChildren.length; s++) {
-                String[] wListSplit = split(wListChildren[s], ".");
-                if(wListSplit.length > 1 && wListSplit[wListSplit.length-1].equals("xml")) wepLists = append(wepLists, wListSplit[0]);
-              }
-              ArrayList wepToggle = new ArrayList();
-              wepToggle.add(new ArrowToggle(100, 280, wepLists));
-              rsTrays.add(new RSelectionTray(0, 250, 250, 50, "WEAPON LIST:", color(0, 200)));
-              ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
-              ph.addArrowToggles(wepToggle);
-              
-              
-              ArrayList vehicleToggle = new ArrayList();
-              vehicleToggle.add(new ArrowToggle(100, 380, onOffToggle));
-              rsTrays.add(new RSelectionTray(0, 350, 250, 50, "Vehicles:", color(0, 200)));
-              ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
-              ph.addArrowToggles(vehicleToggle);
-              
-              ArrayList pickupToggle = new ArrayList();
-              pickupToggle.add(new ArrowToggle(100, 480, onOffToggle));
-              rsTrays.add(new RSelectionTray(0, 450, 250, 50, "Pickups:", color(0, 200)));
-              ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
-              ph.addArrowToggles(pickupToggle);
-              
-              ArrayList powerupToggle = new ArrayList();
-              powerupToggle.add(new ArrowToggle(100, 580, onOffToggle));
-              rsTrays.add(new RSelectionTray(0, 550, 250, 50, "Powerups:", color(0, 200)));
-              ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
-              ph.addArrowToggles(powerupToggle);
-
-
-              ArrowToggle atogCast = null;  //SET POINTER TO NULL SO WE CAN REASSIGN IT ON EACH BOT NUMBER TOGGLE
-              
-              ArrayList botToggle = new ArrayList();
-              botToggle.add(new ArrowToggle(400, 280, amountToggle));  //ALL BOTS
-              atogCast = (ArrowToggle) botToggle.get(botToggle.size()-1);
-              atogCast.curSelect = Integer.parseInt(amountToggle[game.maxSoldiers]);
-              
-              for(int m=0; m<4; m++) botToggle.add(new ArrowToggle(400, 330+(m*50), amountToggle));
-              
-              //EVENS GAME.MAXSOLDIERS THROUGHOUT THE TEAMS
-              int curSoldiersAdded = 0;  //USED TO EVEN OUT ROUNDING ERRORS, NEEDS FIXING...
-              int curTeamTrack = 0;
-              int[] teamSoldierAmount = setArrayToZero(4);
-              
-              while(curSoldiersAdded < game.maxSoldiers) {
-                teamSoldierAmount[curTeamTrack]++;
-                curSoldiersAdded++;
-                curTeamTrack++;
-                if(curTeamTrack == 4) curTeamTrack = 0;
-              }
-              for(int m=0; m<4; m++) {
-                atogCast = (ArrowToggle) botToggle.get(botToggle.size()-1-m);
-                atogCast.curSelect = Integer.parseInt(amountToggle[teamSoldierAmount[m]]);
-              }
-              
-              rsTrays.add(new RSelectionTray(300, 250, 500, 350, "Bots:", color(0, 200)));
-              ph = (RSelectionTray) rsTrays.get(rsTrays.size()-1);
-              ph.addArrowToggles(botToggle);
-              ph.setBotTray(true);
-              */
-            //  choosingMaps = false;
-              
             }
           }
           text(mapChildren[i], 0, height/24+50+i*18+offsetY);  //FINALLY DRAW NAME OF MAP
@@ -346,145 +245,6 @@ class Menu {
     }
     
     showOffset(150);
-  }
-  
-  void showMapOptions() {
-    pushMatrix();
-      translate(width*0.7, 0);
-      fill(0);
-      rect(0, 0, width*0.34, 200);
-      textFont(FONTtitle);
-      fill(255);
-      text("Start\nGame", 50, 80);
-    popMatrix();
-    
-    if(mousePressed && mouseButton == LEFT && mouseX > width*0.7 && mouseY < 200) {  //CLICKED ON START GAME
-      String tempLevelName = game.levelName;
-      game = new Engine(tempLevelName);
-      loadMapRepo(tempLevelName);      
-      
-      game.setMenuMode(false);
-      mainMenu = false;
-      
-      //INIT POINTERS
-      RSelectionTray bh = null;
-      TextBox tbCast = null;
-      ArrowToggle atCast = null;
-      RadioBox rbCast = null;
-      
-      bh = (RSelectionTray) rsTrays.get(0);
-      boolean[] gameModes = new boolean[5];
-      
-      for(int i=0; i<bh.boxes.size(); i++) {
-        rbCast = (RadioBox) bh.boxes.get(i);
-        gameModes[i] = rbCast.on;
-      }
-      game.setModes(gameModes);
-      
-      atCast = (ArrowToggle) bh.arrows.get(0);
-      game.setGameType(atCast.curSelect);
-      
-      bh = (RSelectionTray) rsTrays.get(1);
-      atCast = (ArrowToggle) bh.arrows.get(0);
-      if(atCast.curSelect != 0) game.setGuns(atCast.options[atCast.curSelect]);
-      
-      
-      bh = (RSelectionTray) rsTrays.get(5);  //SET SOLDIERS TO RIGHT TEAMS
-      atCast = (ArrowToggle) bh.arrows.get(0);  //GETS AMOUNT OF PLAYERS OVERALL
-      //CORRECT OVERAGE OR UNDERAGE WITH THESE WHILES
-      while(game.soldierData.size() < Integer.parseInt(atCast.options[atCast.curSelect])) {
-        game.soldierData.add(new Soldier(0, 0));
-        Soldier sh = (Soldier) game.soldierData.get(game.soldierData.size()-1);
-        sh.setupAnim();
-        Spawn curSpawnCast = new Spawn();
-        curSpawnCast = (Spawn) curSpawnCast.findSoldierSpawn(sh.team);
-        if(curSpawnCast != null) sh.respawn(curSpawnCast.x, curSpawnCast.y);
-      }
-        
-      while(game.soldierData.size() > Integer.parseInt(atCast.options[atCast.curSelect])) {
-        Soldier sh = (Soldier) game.soldierData.get(game.soldierData.size()-1);
-        if(sh.driving) sh.exitVehicle(false);
-        world.remove(sh.self);
-        game.soldierData.remove(game.soldierData.size()-1);
-      }
-      
-      if(game.getGameType() != 0 && game.getGameType() != 1) {  //CHANGE TO REFLECT ALL TEAM BASED MODES
-        int[] teamSoldierAmount = new int[4];
-        for(int i=1; i<5; i++) {  //ONE FOR ALL BOTS THEN 4 FOR EACH TEAM TYPE
-          atCast = (ArrowToggle) bh.arrows.get(i);
-          teamSoldierAmount[i-1] = Integer.parseInt(atCast.options[atCast.curSelect]);
-        }
-        
-        if(game.getGameType() == 5) {  //FOR CTF, (or any 2 team modes) WE BALANCE CHARLIE AND DELTA BETWEEN ALPHA AND BRAVO
-          int extraPlayers = teamSoldierAmount[2]+teamSoldierAmount[3];
-          
-          int abTeam = 0;
-          while(extraPlayers > 1) {
-            teamSoldierAmount[abTeam]++;
-            if(abTeam == 1) abTeam--;
-            else abTeam++;
-            extraPlayers--;
-          }
-        }
-        
-        int curTeamSelect = 0;
-        for(int i=0; i<teamSoldierAmount[curTeamSelect]; i++) {
-          Soldier sh = (Soldier) game.soldierData.get(i);
-          sh.setTeam(curTeamSelect);
-        }
-        curTeamSelect++;
-        
-        for(int i=teamSoldierAmount[curTeamSelect-1]; i<teamSoldierAmount[curTeamSelect-1]+teamSoldierAmount[curTeamSelect]; i++) {
-          Soldier sh = (Soldier) game.soldierData.get(i);
-          sh.setTeam(curTeamSelect);
-        }
-        curTeamSelect++;
-        
-        if(game.getGameType() != 5) {
-          for(int i=teamSoldierAmount[curTeamSelect-2]+teamSoldierAmount[curTeamSelect-1]; i<teamSoldierAmount[curTeamSelect-2]+teamSoldierAmount[curTeamSelect-1]+teamSoldierAmount[curTeamSelect]; i++) {
-            Soldier sh = (Soldier) game.soldierData.get(i);
-            sh.setTeam(curTeamSelect);
-          }
-          curTeamSelect++;
-          for(int i=teamSoldierAmount[curTeamSelect-3]+teamSoldierAmount[curTeamSelect-2]+teamSoldierAmount[curTeamSelect-1]; i<teamSoldierAmount[curTeamSelect-3]+teamSoldierAmount[curTeamSelect-2]+teamSoldierAmount[curTeamSelect-1]+teamSoldierAmount[curTeamSelect]; i++) {
-            Soldier sh = (Soldier) game.soldierData.get(i);
-            sh.setTeam(curTeamSelect);
-          }
-        }
-      }
-    }
-    
-    for(int i=0; i<rsTrays.size(); i++) {
-      RSelectionTray ph = (RSelectionTray) rsTrays.get(i);
-      ph.update();
-    }
-    
-    RSelectionTray bh = null;
-    pushMatrix();
-      translate(330, 280);
-      textFont(FONTframeRate, 12);
-      fill(255);
-      text("Bot Amount", 0, 0);
-      fill(255);
-      text("Alpha", 0, 50);
-      fill(255, 0, 0);
-      text("Bravo", 0, 100);
-      fill(0, 255, 0);
-      text("Charlie", 0, 150);
-      fill(0, 0, 255);
-      text("Delta", 0, 200);
-      
-      fill(0, 150);
-      bh = (RSelectionTray) rsTrays.get(0);
-      ArrowToggle gh = (ArrowToggle) bh.arrows.get(0);
-      if(gh.curSelect == 0 || gh.curSelect == 1) rect(-20, 30, 200, 250);
-      else if(gh.curSelect == 5) rect(-20, 30, 200, 100);
-    popMatrix();
- 
-    if(baseVehicleData.size() < 2) {
-      bh = (RSelectionTray) rsTrays.get(2);
-      rect(bh.x, bh.y, bh.w, bh.h);
-    }
   }
 
   void showServers() {
@@ -846,67 +606,6 @@ class Menu {
       popMatrix();
     }
   }
-  
-  
-  /*
-  class List {
-    float x;
-    float y;
-    float w;
-    float h;
-    boolean scrollable;
-    int scrollSide;  //0 is left, 1 is bottom
-    String data[];
-    
-    List(float x_, float y_, float w_, float h_) {
-      x = x_;
-      y = y_;
-      w = w_;
-      h = h_;
-      scrollable = true;
-      scrollSide = 0;
-    }
-    
-    void setScroll(boolean set_, int side_) {
-      scrollable = set_;
-      scrollSide = side_;
-    }
-    
-    void setData(String[] data_) { data = data_; }
-    
-    int update() {
-      pushMatrix();
-        translate(x, y+offsetY);
-        textFont(FONTmaps, 12);
-        for(int i=0; i<data.length; i++) {
-          text(data[i], 0, i*18);
-          if(mousePressed && mouseButton == LEFT && mouseX > x && mouseX < x+w && mouseY > y+(i*18) && mouseY < y+(i*18)+20) return i;
-        }
-      popMatrix();
-
-      return 0;
-    }
-    
-    
-    void showOffset() {
-      pushMatrix();
-        translate(x, y);
-        fill(255);
-        stroke(255);
-        
-        line(0, 0, 0, h);
-        triangle(0, 0,-15, 15, 15, 15);
-        triangle(0, h, -15, h-15, 15, h-15);
-        
-        if(mouseX < width/10) {
-          if(mouseY > height*0.8) offsetY -= map(height*0.8-mouseY, 0, height*0.2, 8, 0);
-          if(mouseY < height*0.2) offsetY += map(mouseY, 0, height*0.2, 8, 0);
-        }
-        
-        noStroke();
-    }
-  }
-  */
   
   class RSelectionTray {
     int x;
