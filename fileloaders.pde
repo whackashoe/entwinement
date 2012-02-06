@@ -337,15 +337,10 @@ void loadMapRepo(String src) {
   }
   
   if (!playingOnline) {
-    if (tempScriptSrc.length > 0) {
-      println("Compiling ...");
-      game.jython = new JyInt(tempScriptSrc, tempScriptVer);
-    }
+    println("Starting Jython...");
+    game.jython = new JyInt(tempScriptSrc, tempScriptVer);
 
-    if (!tempScriptAdditional.equals("")) {
-      if (game.jython == null) game.jython = new JyInt(tempScriptSrc, tempScriptVer);
-      game.jython.interp.exec(tempScriptAdditional);
-    }
+    if (!tempScriptAdditional.equals("")) game.jython.interp.exec(tempScriptAdditional);
   } 
   else {
     println("Script Ignored");

@@ -220,8 +220,6 @@ void setup() {
 
   mainMenu = true;
   gameMenu = new Menu();
-  //game = new Engine("TESTING SCRIPTS");
-  //loadMapRepo("_proctest.xml");
 }
 
 void draw() {

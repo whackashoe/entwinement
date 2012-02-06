@@ -40,6 +40,8 @@ class GameCom {
         
         game = new Engine(sdata[0]);
         loadMap(sdata[0], 0.0, 0.0, 1.0, 1.0);
+        println("Starting Jython...");
+        game.jython = new JyInt(new String[0], new String[0]);
         mainMenu = false;
         game.setMenuMode(false);
         
