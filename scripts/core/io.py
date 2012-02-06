@@ -30,20 +30,16 @@ def loadMap(src, x, y, w, h):
 	global com
 	com += 'l m '+str(src)+' '+str(x)+' '+str(y)+' '+str(w)+' '+str(h)+';'
 
-def addVehicle(type, x, y):
-	global com
-	com += 'a v '+str(type)+' '+str(x)+' '+str(y)+';'
-
-
 def loadTexture(src):
 	global com
 	com += 'a tex '+src+';'
+
 
 def addScenery(name, x, y, z, w, h, r):
 	global com
 	com += 'a scen '+str(name)+' '+str(x)+' '+str(y)+' '+str(z)+' '+str(w)+' '+str(h)+' '+str(r)+';'
 
-def addSceneryFullData(name, x, y, z, w, h, r, r1, g1, b1, a1, r2, g2, b2, a2, r3, g3, b3, a3, z0, z1, z2, z3):
+def addSceneryExplicit(name, x, y, z, w, h, r, r1, g1, b1, a1, r2, g2, b2, a2, r3, g3, b3, a3, z0, z1, z2, z3):
 	global com
 	com += 'a scen '+str(name)+' '+str(x)+' '+str(y)+' '+str(z)+' '+str(w)+' '+str(h)+' '+str(r)+' '+str(r1)+' '+str(g1)+' '+str(b1)+' '+str(a1)+' '+str(r2)+' '+str(g2)+' '+str(b2)+' '+str(a2)+' '+str(r3)+' '+str(g3)+' '+str(b3)+' '+str(a3)+' '+str(z0)+' '+str(z1)+' '+str(z2)+' '+str(z3)+';'
 	

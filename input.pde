@@ -62,7 +62,7 @@ void keyPressed() {
         }
         if(keyCode == KeyEvent.VK_F2) {
           saveFrame("screenshots/"+month()+"-"+day()+"-"+year()+"_"+hour()+"."+minute()+"."+second()+".png"); 
-          game.kConsole.addKillBoxText("Screenshot saved");
+          game.kConsole.addKillBoxText("Screenshot saved", game.kConsole.white);
         }
       }
       

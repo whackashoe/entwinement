@@ -30,6 +30,9 @@ class Vehicle:
 		self.xVelo = xv
 		self.yVelo = yv
 		
+def addVehicle(type, x, y):
+	global com
+	com += 'a v '+str(type)+' '+str(x)+' '+str(y)+';'
 
 def getVehicle(n):
 	global d_vehicles

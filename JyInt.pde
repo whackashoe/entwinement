@@ -101,14 +101,72 @@ class JyInt {
       if(piece.length > 1) {
         for(int i=0; i<piece.length; i++) {
           if(piece[i].equals("")) {
-            System.err.println("*****CHECK SYNTAX*****");
+           game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
             return;
           }
         }
       }
       
       //AND CHECK FOR COMMANDS
-      if(piece[0].equals("req") || piece[0].equals("request")) {
+      if(piece[0].equals("commands")) {
+        game.kConsole.addKillBoxText("*****COMMAND LIST*****", game.kConsole.blue);
+        game.kConsole.addKillBoxText("____________________", game.kConsole.white);
+        if(piece.length == 1) {
+          game.kConsole.addKillBoxText("Welcome to Entwinement", game.kConsole.white);
+          game.kConsole.addKillBoxText("", game.kConsole.white);
+          game.kConsole.addKillBoxText("Type \"/commands load\" for commands related to loading", game.kConsole.white);
+          game.kConsole.addKillBoxText("Type \"/commands add\" for commands related to adding things to world", game.kConsole.white);
+          game.kConsole.addKillBoxText("Type \"/commands remove\" for commands related to removing things from world", game.kConsole.white);
+          game.kConsole.addKillBoxText("Type \"/commands alter\" for commands related to altering world", game.kConsole.white);
+        }
+        
+        if(piece.length == 2) {
+          if(piece[1].equals("load")) {
+            game.kConsole.addKillBoxText("/l bv (filename)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Loads vehicle, must load before adding", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/l g (filename)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Loads gun", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/l gl (filename)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Loads gunlist", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/l sc (filename)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Loads script", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/l m (filename) (x) (y) (scaleX) (scaleY)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Loads map layer", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/l tex (filename)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Loadsmaptexture", game.kConsole.blue);
+          } else if(piece[1].equals("add")) {
+            game.kConsole.addKillBoxText("/a s (team)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds soldier", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a sp (x) (y) (type) (subtype) (amount)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds spawn", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a p (type) (x1) (y1) (x2) (y2) (x3) (y3) (denity) (restitution) (friction) (red) (green) (blue) (alpha)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds polygon", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a v (type) (x) (y)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds vehicle, type is integer (0 for first baseVehicle loaded)", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a scen (filename) (x) (y) (z) (width) (height) (rotation)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds scenery", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a b (x) (y) (xforce) (yforce) (type) (soldierid)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds bullet", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a ea (x) (y) (radius) (size) (detail)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds earth", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a gr (x) (y) (strength) (distance)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds gravitron", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a hb (x) (y) (amount)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds healthbox", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a ab (x) (y) (type) (amount)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds attachment box", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/a gb (x) (y) (type) (ammo) (reloadtimer) (reloading)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Adds gun box", game.kConsole.blue);
+          } else if(piece[1].equals("alter")) {
+            game.kConsole.addKillBoxText("/c_g (x) (y)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Change gravity", game.kConsole.blue);
+            game.kConsole.addKillBoxText("/c_c (time) (ex) (ey) (ez) (tx) (ty) (tz)", game.kConsole.white);
+            game.kConsole.addKillBoxText("Change Camera for set time", game.kConsole.blue);
+          }
+        }
+      }
+      
+      else if(piece[0].equals("req") || piece[0].equals("request")) {
          if(piece[1].equals("s")) {
             Soldier ph = (Soldier) game.getSoldierById(Integer.parseInt(piece[2]));
             if(piece[3].equals("pv")) {
@@ -172,36 +230,36 @@ class JyInt {
             }
             */
           } else {
-            System.err.println("*****CHECK SYNAX******");
+            game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
           }
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
       } else if(piece[0].equals("l") || piece[0].equals("load")) {  //LOAD SOMETHING FOR MAP
         if(piece[1].equals("bv") || piece[1].equals("basevehicle")) {
           String[] xmlSplit = split(piece[2], '.');
           if(xmlSplit.length > 1 && xmlSplit[1].equals("xml")) {
             loadVehicle(piece[2]);
-            println("**VEHICLE "+piece[2]+" LOADED**");
+            game.kConsole.addKillBoxText("**Vehicle "+piece[2]+" loaded**", game.kConsole.green);
           } else {
-            System.err.println("*****CHECK FILE FORMAT******");
+            game.kConsole.addKillBoxText("*****CHECK FILE FORMAT*****", game.kConsole.red);
           }
         } else if(piece[1].equals("gl") || piece[1].equals("gunlist")) {
           String[] xmlSplit = split(piece[2], '.');
           if(xmlSplit.length > 1 && xmlSplit[1].equals("xml")) {
             loadGuns(piece[2]);
-            println("**GUNLIST "+piece[2]+" LOADED**");
+            game.kConsole.addKillBoxText("**Gunlist "+piece[2]+" loaded**", game.kConsole.green);
           } else {
-            System.err.println("*****CHECK FILE FORMAT******");
+            game.kConsole.addKillBoxText("*****CHECK FILE FORMAT*****", game.kConsole.red);
           }
             
         } else if(piece[1].equals("g") || piece[1].equals("gun")) {
           String[] xmlSplit = split(piece[2], '.');
           if(xmlSplit.length > 1 && xmlSplit[1].equals("xml")) {
             game.gunData = (Gun[]) append(game.gunData, loadIndividualGun(piece[2], boolean(piece[3])));
-            println("**GUN "+piece[2]+" LOADED**");
+            game.kConsole.addKillBoxText("**Gun "+piece[2]+" loaded**", game.kConsole.green);
           } else {
-            System.err.println("*****CHECK FILE FORMAT******");
+            game.kConsole.addKillBoxText("*****CHECK FILE FORMAT*****", game.kConsole.red);
           }
           
           /* else if(piece[1].equals("p") || piece[1].equals("particle")) {
@@ -226,7 +284,7 @@ class JyInt {
         } else if(piece[1].equals("m") || piece[1].equals("map")) {
           String[] mapSplit = split(piece[2], '.');
           if(mapSplit.length > 1) loadMap(piece[2], Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]));
-          else System.err.println("*****CHECK FILE FORMAT******");
+          else game.kConsole.addKillBoxText("*****CHECK FILE FORMAT*****", game.kConsole.red);
           
         } 
         
@@ -235,15 +293,15 @@ class JyInt {
           if(piece.length == 2) {
             game.soldierData.add(new Soldier(transX+mouseX-width/2, transY+mouseY-height/2));
             Soldier ph = (Soldier) game.soldierData.get(game.soldierData.size()-1);
-            println("**ADDED SOLDIER:"+ph.self.getX()+"/"+ph.self.getY()+"**");
+            game.kConsole.addKillBoxText("**Added Soldier "+ph.self.getX()+"/"+ph.self.getY()+"**", game.kConsole.green);
           } else if(piece.length == 3) {
             game.soldierData.add(new Soldier(transX+mouseX-width/2, transY+mouseY-height/2));
             Soldier ph = (Soldier) game.soldierData.get(game.soldierData.size()-1);
             ph.setupAnim();
             ph.setTeam(constrain(Integer.parseInt(piece[2]), 0, 3));
-            println("**ADDED SOLDIER:"+ph.self.getX()+"/"+ph.self.getY()+"**");
+            game.kConsole.addKillBoxText("**Added Soldier "+ph.self.getX()+"/"+ph.self.getY()+"**", game.kConsole.green);
           } else {
-            System.err.println("ADD SOLDIER ERROR: "+piece.length+" args given, 0 or 1 needed ");
+            game.kConsole.addKillBoxText("*****ADD SOLDIER ERROR: "+piece.length+" args given, 0 or 1 needed *****", game.kConsole.red);
           }
           
         } else if(piece[1].equals("v") || piece[1].equals("vehicle")) {
@@ -251,8 +309,10 @@ class JyInt {
             game.vehicleData.add(new Vehicle(new Vec2D(Integer.parseInt(piece[3]), Integer.parseInt(piece[4])), constrain(Integer.parseInt(piece[2]), 0, baseVehicleData.size()-1)));
             Vehicle ph = (Vehicle) game.vehicleData.get(game.vehicleData.size()-1);
             //println("**VEHICLE "+ph.name+" ADDED**");
+            game.kConsole.addKillBoxText("**Vehicle "+ph.name+" added**", game.kConsole.green);
           } else {
             System.err.println("ADD VEHICLE ERROR: YOU NEED ATLEAST ONE BASEVEHICLE BEFORE YOU CAN CLONE(load basevehicle first)");
+            
           }
           
         } else if(piece[1].equals("b") || piece[1].equals("bullet")) {
@@ -402,7 +462,7 @@ class JyInt {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[1]), 0, game.soldierData.size()-1));
           ph.setTeam(constrain(Integer.parseInt(piece[2]), 0, 3));
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
         
       } else if(piece[0].equals("s_cg") || piece[0].equals("changegun")) { 
@@ -412,7 +472,7 @@ class JyInt {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[1]), 0, game.soldierData.size()-1));
           ph.curGun.gun = constrain(Integer.parseInt(piece[2]), 0, game.gunData.length-1);
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
         
       } else if(piece[0].equals("s_ca") || piece[0].equals("changeattachment")) {
@@ -469,41 +529,41 @@ class JyInt {
         if(piece[1].equals("s")) {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[2]), 0, game.soldierData.size()-1));
           if(!ph.driving) ph.self.setPosition(constrain(Integer.parseInt(piece[3]), -mapW/2+50, mapW/2-50), constrain(Integer.parseInt(piece[4]), -mapH/2+50, mapH/2-50));
-          else System.err.println("*****CANNOT TELEPORT WHILE DRIVING******");
+          else game.kConsole.addKillBoxText("*****Cannot teleport while driving*****", game.kConsole.red);
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
       } else if(piece[0].equals("f_af") || piece[0].equals("applyforce")) {
         if(piece[1].equals("s")) {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[2]), 0, game.soldierData.size()-1));
           if(!ph.driving) ph.self.addForce(Integer.parseInt(piece[3]), Integer.parseInt(piece[4]));
-          else System.err.println("*****CANNOT APPLYFORCE WHILE DRIVING******");
+          else game.kConsole.addKillBoxText("*****Cannot apply force while driving*****", game.kConsole.red);
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
       } else if(piece[0].equals("f_r") || piece[0].equals("rotate")) {
         if(piece[1].equals("s")) {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[2]), 0, game.soldierData.size()-1));
           if(!ph.driving) ph.self.setRotation(Integer.parseInt(piece[3]));
-          else System.err.println("*****CANNOT SET ROTATION WHILE DRIVING******");
+          else game.kConsole.addKillBoxText("*****Cannot set rotation while driving*****", game.kConsole.red);
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
       } else if(piece[0].equals("f_ar") || piece[0].equals("applyrotate")) {
         if(piece[1].equals("s")) {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[2]), 0, game.soldierData.size()-1));
           if(!ph.driving) ph.self.adjustRotation(Integer.parseInt(piece[3]));
-          else System.err.println("*****CANNOT APPLY ROTATION WHILE DRIVING******");
+          else game.kConsole.addKillBoxText("*****Cannot apply rotation while driving*****", game.kConsole.red);
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
       } else if(piece[0].equals("f_v") || piece[0].equals("velocity")) {
         if(piece[1].equals("s")) {
           Soldier ph = (Soldier) game.soldierData.get(constrain(Integer.parseInt(piece[2]), 0, game.soldierData.size()-1));
           if(!ph.driving) ph.self.setVelocity(Integer.parseInt(piece[3]), Integer.parseInt(piece[4]));
-          else System.err.println("*****CANNOT SET VELOCITY WHILE DRIVING******");
+          else game.kConsole.addKillBoxText("*****Cannot set rotation while driving*****", game.kConsole.red);
         } else {
-          System.err.println("*****CHECK SYNAX******");
+          game.kConsole.addKillBoxText("*****CHECK SYNTAX*****", game.kConsole.red);
         }
         
       } else if(piece[0].equals("c_g") || piece[0].equals("changegravity")) {
@@ -532,7 +592,8 @@ class JyInt {
         }
         
       } else {
-        System.err.println("*****UNRECOGNIZED COMMAND******");
+        game.kConsole.addKillBoxText("*****UNRECOGNIZED COMMAND*****", game.kConsole.red);
+        game.kConsole.addKillBoxText("*****TYPE /commands  TO SEE LIST*****", game.kConsole.red);
       }
     }
   }

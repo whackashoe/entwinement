@@ -209,7 +209,7 @@ class Engine {
   }
 
   void addMapData(String content_, int maxHealthPacks_, int maxAttachments_, int maxVehicles_, int jets_) {
-    kConsole.addKillBoxText(content_);
+    kConsole.addKillBoxText(content_, kConsole.white);
     maxHealthPacks = maxHealthPacks_;
     maxAttachments = maxAttachments_;
     maxVehicles = maxVehicles_;
@@ -227,8 +227,8 @@ class Engine {
      levelName = name_;
      levelSummary = summary_;
      */
-    kConsole.addKillBoxText(levelName);
-    kConsole.addKillBoxText(levelSummary);
+    kConsole.addKillBoxText(levelName, kConsole.white);
+    kConsole.addKillBoxText(levelSummary, kConsole.white);
   }
 
   void addPathfinder(int x_, int y_, int w_, int h_, int rows_, int cols_, String content_, boolean draw_) {
@@ -702,7 +702,7 @@ class Engine {
         sendDataToScripts(data);
       } 
       else {  //just talking
-        kConsole.addKillBoxText(meCast.name+" says "+data);
+        kConsole.addKillBoxText(meCast.name+" says "+data, kConsole.white);
         if (jython != null) jython.onSoldierSpeak(meCast.id, data);
       }
     }
