@@ -59,8 +59,6 @@ class splotch:
 		addSpawn(x, y-radius, 6, 0, 1)
 		addGravitron(x, y, 700, radius*2)
 		
-		print str(x) + "-" + str(y)
-		
 	def update(this):
 		if this.start == 0:
 			s = getSoldiers()
