@@ -137,6 +137,7 @@ class Engine {
     sceneryTextureGLNameList = new String[0];
 
     kConsole = new KillConsole();
+    kConsole.addKillBoxText("View commands by pressing tab then \"/commands\" (no quotes)", kConsole.white);
     hud = new HUD();
     frameRateOverLastFew = new int[4];
     frameRateOverLastFew[0] = 30;
