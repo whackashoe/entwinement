@@ -14,7 +14,7 @@ class splotch:
 		#enginePoint = EngineState()
 		#print enginePoint
 		#print enginePoint.mapLoaded
-		loadTexture("ananas.bmp")
+		loadTexture("blank.bmp")
 		amnt = 20
 		for i in range(-amnt/2, amnt/2):
 			this.createSplotch(i*400, 0, 20, 400)
