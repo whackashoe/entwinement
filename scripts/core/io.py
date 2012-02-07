@@ -1,10 +1,38 @@
-# TODO
-#def teleportObject(id, x, y): pass
-#def applyForceToObject(id, xf, yf): pass
-#def setVelocityOfObject(id, x, y): pass
-#def setRotationOfObject(id, r): pass
-#def applyRotationToObject(id, r): pass
+def createPhysicalCircle(id, x, y, radius, d, r, f):
+	global com
+	com += 'a fo '+str(id)+' '+str(x)+' '+str(y)+' '+str(radius)+' '+str(d)+' '+str(r)+' '+str(f)+';'
+	
+def createPhysicalRect(id, x, y, w, h, d, r, f):
+	global com
+	com += 'a fo '+str(id)+' '+str(x)+' '+str(y)+' '+str(w)+' '+str(h)+' '+str(d)+' '+str(r)+' '+str(f)+';'
+	
+def createPhysicalPolygon(id, x1, y1, x2, y2, x3, y3, d, r, f):
+	global com
+	com += 'a fo '+str(id)+' '+str(x1)+' '+str(y1)+' '+str(x2)+' '+str(y2)+' '+str(x3)+' '+str(y3)+' '+str(d)+' '+str(r)+' '+str(f)+';'
+	
+def teleportObject(id, x, y):
+	global com
+	com += 'fo t '+str(id)+' '+str(x)+' '+str(y)+';'
 
+def applyForceToObject(id, xf, yf):
+	global com
+	com += 'fo af '+str(id)+' '+str(xf)+' '+str(yf)+';'
+
+def setVelocityOfObject(id, x, y):
+	global com
+	com += 'fo sv '+str(id)+' '+str(x)+' '+str(y)+';'
+
+def setRotationOfObject(id, r):
+	global com
+	com += 'fo sr '+str(id)+' '+str(r)+';'
+
+def applyRotationToObject(id, r):
+	global com
+	com += 'fo ar '+str(id)+' '+str(r)+';'
+
+def setColorOfObject(id, r, g, b, a):
+	global com
+	com += 'fo sc '+str(id)+' '+str(r)+' '+str(g)+' '+str(b)+' '+str(a)+';'
 	
 def loadVehicle(src):
 	global com

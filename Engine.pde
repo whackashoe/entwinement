@@ -62,7 +62,7 @@ class Engine {
   ArrayList particleData;
   ArrayList animData;
   ArrayList worldJointData;
-  ArrayList physObjsData;
+  ArrayList physObjData;
   KillConsole kConsole;
   HUD hud;
   
@@ -188,7 +188,7 @@ class Engine {
     grappleData = new ArrayList();
 
     animData = new ArrayList();
-    physObjsData = new ArrayList();
+    physObjData = new ArrayList();
 
     addAnims();    
 
@@ -581,8 +581,8 @@ class Engine {
           }
         }
         
-        for(int i=0; i<physObjsData.size(); i++) {
-          PhysObj ph = (PhysObj) physObjsData.get(i);
+        for(int i=0; i<physObjData.size(); i++) {
+          PhysObj ph = (PhysObj) physObjData.get(i);
           ph.update();
         }
 
@@ -1523,6 +1523,14 @@ class Engine {
         return new Spawn(0, 0, 0, 0, 0);
       }
     }
+  }
+  
+  PhysObj getPhysObjById(int id) {
+    for (int i=0; i<physObjData.size(); i++) {
+      PhysObj ph = (PhysObj) physObjData.get(i);
+      if (ph.id == id) return ph;
+    }
+    return null;
   }
   
   boolean checkSoldierAIById(int id) {

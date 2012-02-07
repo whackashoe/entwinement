@@ -291,11 +291,11 @@ class JyInt {
       } else if(piece[0].equals("a") || piece[0].equals("add")) {  //ADD SOMETHING TO MAP
         if(piece[1].equals("fo")) {
           if(piece.length == 9) {
-            game.physObjsData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8])));
+            game.physObjData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8])));
           } else if(piece.length == 10) {
-            game.physObjsData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9])));
+            game.physObjData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9])));
           } else if(piece.length == 12) {
-            game.physObjsData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9]), Float.parseFloat(piece[10]), Float.parseFloat(piece[11])));
+            game.physObjData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9]), Float.parseFloat(piece[10]), Float.parseFloat(piece[11])));
           }
         }
         
@@ -600,6 +600,27 @@ class JyInt {
         } else if(piece.length == 11) {
           game.setCamera(Float.parseFloat(piece[1]), Float.parseFloat(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9]), Float.parseFloat(piece[10]));
         }
+        
+      } else if(piece[0].equals("fo")) {
+        PhysObj ph = game.getPhysObjById(Integer.parseInt(piece[2]));
+        
+        if(ph != null) {
+          if(piece[1].equals("t")) {
+            ph.p.setPosition(Float.parseFloat(piece[3]), Float.parseFloat(piece[4]));
+          } else if(piece[1].equals("af")) {
+            ph.p.addForce(Float.parseFloat(piece[3]), Float.parseFloat(piece[4]));
+          } else if(piece[1].equals("sv")) {
+            ph.p.setVelocity(Float.parseFloat(piece[3]), Float.parseFloat(piece[4]));
+          } else if(piece[1].equals("sr")) {
+            ph.p.setRotation(Float.parseFloat(piece[3]));
+          } else if(piece[1].equals("ar")) {
+            ph.p.adjustRotation(Float.parseFloat(piece[3]));
+          } else if(piece[1].equals("sc")) {
+            ph.setColor(Integer.parseInt(piece[3]), Integer.parseInt(piece[4]), Integer.parseInt(piece[5]), Integer.parseInt(piece[6]));
+          }
+          
+        }
+        
         
       } else {
         game.kConsole.addKillBoxText("*****UNRECOGNIZED COMMAND*****", game.kConsole.red);
