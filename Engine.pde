@@ -62,6 +62,7 @@ class Engine {
   ArrayList particleData;
   ArrayList animData;
   ArrayList worldJointData;
+  ArrayList physObjsData;
   KillConsole kConsole;
   HUD hud;
   
@@ -187,7 +188,7 @@ class Engine {
     grappleData = new ArrayList();
 
     animData = new ArrayList();
-
+    physObjsData = new ArrayList();
 
     addAnims();    
 
@@ -579,6 +580,11 @@ class Engine {
             }
           }
         }
+        
+        for(int i=0; i<physObjsData.size(); i++) {
+          PhysObj ph = (PhysObj) physObjsData.get(i);
+          ph.update();
+        }
 
 
         for (int i=0; i<vehicleData.size(); i++) {
@@ -661,6 +667,8 @@ class Engine {
       if (!playingOnline) {
         if (jython.alive) jython.update();
         else jython = null;
+        
+        
       }
       if (jython.toWorldDraw.length > 0) {
         drawFromScript(0);
