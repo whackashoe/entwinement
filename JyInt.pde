@@ -289,7 +289,17 @@ class JyInt {
         } 
         
       } else if(piece[0].equals("a") || piece[0].equals("add")) {  //ADD SOMETHING TO MAP
-        if(piece[1].equals("s") || piece[1].equals("soldier")) {
+        if(piece[1].equals("fo")) {
+          if(piece.length == 9) {
+            game.physObjsData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8])));
+          } else if(piece.length == 10) {
+            game.physObjsData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9])));
+          } else if(piece.length == 12) {
+            game.physObjsData.add(new PhysObj(Integer.parseInt(piece[2]), Float.parseFloat(piece[3]), Float.parseFloat(piece[4]), Float.parseFloat(piece[5]), Float.parseFloat(piece[6]), Float.parseFloat(piece[7]), Float.parseFloat(piece[8]), Float.parseFloat(piece[9]), Float.parseFloat(piece[10]), Float.parseFloat(piece[11])));
+          }
+        }
+        
+        else if(piece[1].equals("s") || piece[1].equals("soldier")) {
           if(piece.length == 2) {
             game.soldierData.add(new Soldier(transX+mouseX-width/2, transY+mouseY-height/2));
             Soldier ph = (Soldier) game.soldierData.get(game.soldierData.size()-1);

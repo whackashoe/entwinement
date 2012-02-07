@@ -49,6 +49,5 @@ class PhysObj {
       fill(0);
       ellipse(0, 0, 100, 100);
     popMatrix();
-    
   }
 }
